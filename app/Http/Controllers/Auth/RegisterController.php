@@ -46,7 +46,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data)//49行目から56にかけてバリデーションを行う
     {
         return Validator::make($data, [
             'username' => 'required|string|max:255',
@@ -76,10 +76,10 @@ class RegisterController extends Controller
     // }
 
     public function register(Request $request){
-        if($request->isMethod('post')){
-            $data = $request->input();
+        if($request->isMethod('post')){//引数に指定した文字列とHTTP動詞が一致するか調べられる
+            $data = $request->input();//入力値を連想配列として取得できる
 
-            $this->create($data);
+            $this->create($data);//createメソッドの処理が行われる
             return redirect('added');
         }
         return view('auth.register');

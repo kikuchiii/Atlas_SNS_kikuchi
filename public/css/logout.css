@@ -1,10 +1,36 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
     background: #186AC9;
+}
+
+header img {
+    width: 150px;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header {
+    padding-top: 80px;
+    color: white;
+    font-size: 30px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.concept-copy {
+    display: block;
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;
+    padding: 40px 10px 40px 10px;
+    border-radius: 8px;
+    border: 1px solid #3c4767;
+    /* ←div要素の枠線を設定。角丸は「左上、右上、右下、左下」全て16pxなので1つに記述をまとめています。*/
+
 }

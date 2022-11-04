@@ -31,8 +31,9 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
-
+Route::post('post/create','PostsController@create');//投稿を押したとき データを作成しデータベースに保存する　同じURLのルーティングが2つあると下のURLが読み込まれる
 Route::get('/profile','UsersController@profile');
+
 
 Route::get('/search','UsersController@index');
 

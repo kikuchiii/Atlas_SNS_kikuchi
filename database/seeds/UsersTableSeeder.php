@@ -13,9 +13,9 @@ class UsersTableSeeder extends Seeder
     {
         //以下を追加します
         DB::table('users')->insert([
-'username' => '菊池',
-'mail' => 'kikuchi@yahoo.co.jp',
-'password' => bcrypt('kikuchi') ,//後ほど調べる
+        'username' => '菊池',
+        'mail' => 'kikuchi@yahoo.co.jp',
+        'password' => bcrypt('kikuchi') ,//後ほど調べる
         ]);
     }
 }
