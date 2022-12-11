@@ -17,5 +17,11 @@ class UsersTableSeeder extends Seeder
         'mail' => 'kikuchi@yahoo.co.jp',
         'password' => bcrypt('kikuchi') ,//後ほど調べる
         ]);
+
+        DB::table('users')->insert([
+        'username' => '鈴木',
+        'mail' => 'suzuki@yahoo.co.jp',
+        'password' => bcrypt('suzuki') ,
+        ]);
     }
 }

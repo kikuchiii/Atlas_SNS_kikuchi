@@ -13,17 +13,26 @@
   <body>
 <h2>機能を実装していきましょう。</h2>
 <div class="page-header">新しく投稿をする</div>
-{!! Form::open(['url' => 'post/create']) !!}
+{!! Form::open(['url' => 'post/create']) !!} <!--post/createにフォームの値を送る-->
 @csrf
 <div class="form-group">
 {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
         </div>
- <button type="submit"><img src="post.png" alt="送信" /></button>
+ <button type="submit"><img src="./images/post.png" alt="送信" /></button>
 {!! Form::close() !!}
     </div>
     <tr>
     <td></td>
     </tr>
+    <h2>admin</h2>
+     <button type="submit"><img src="./images/post.png" alt="送信" /></button>
+    @foreach ($list as $list)
+    {{ $list->id }}
+    {{ $list->user_id }}
+    {{ $list->post }}
+    {{ $list->created_at }}
+    <a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+    @endforeach
 </body>
 
 @endsection

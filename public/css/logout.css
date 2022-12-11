@@ -5,12 +5,12 @@ html {
 }
 
 body {
-    height: 100%;
+    height: 50%;
     background: #186AC9;
 }
 
 header img {
-    width: 150px;
+    width: 100px;
     padding: 20px 0;
     text-align: center;
 }
@@ -33,4 +33,22 @@ header {
     border: 1px solid #3c4767;
     /* ←div要素の枠線を設定。角丸は「左上、右上、右下、左下」全て16pxなので1つに記述をまとめています。*/
 
+}
+
+label [type='mail adress'] {
+    border: 1px solid #AAA;
+    font-size: 7pt;
+}
+
+a {
+    color: white;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background-color: #FF3399;
+    display: inline-block;
+    padding: 15px 0px;
+    text-align: center;
+    border-radius: 0.5rem;
 }

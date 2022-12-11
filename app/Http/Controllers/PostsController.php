@@ -4,34 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class PostsController extends Controller
 {
     //
-    public function index()
+    public function index()//表示用
     {
-
-        return view('posts.index');//ビューファイルを引っ張ってくる
+     $list = \DB::table('posts')->get();
+        return view('posts.index',['list' => $list]);//ビューファイルを引っ張ってくる
     }
-    public function create(Request $request)
+    public function create(Request $request)//新規投稿処理
     {
         $post = $request->input('newPost');//name属性を取けとり
+        $user_id = Auth::id();//ユーザーIDの受け渡し
         \DB::table('posts')->insert([
-            'post' => $post
-        ]);
+            'post' => $post,//投稿内容を表す
+            'user_id' => $user_id//
 
-        return redirect('index');
+        ]);
+        return redirect('/top');//indexに飛ぶ
     }
-    public function store(Request $request)//コンストラクタインジェクション データを作成しデータベースに保存する  消去　
+    public function delete($id)
     {
-        $this->validate($request, [
-            'post' => 'required|min:1|max:200',
-        ]);
-        $post = new Item;
-        //フォームから送られてきたデータをそれぞれ代入
-        $post->user_id = Auth::user()->id; //ユーザーIDの受け渡し
-        //データベースに保存
-        $post->save();
+        \DB::table('posts')
+          ->where('id', $id)
+           ->delete();
 
-        return redirect('index');//indexに飛ぶ
+           return redirect('/top');
     }
 }
