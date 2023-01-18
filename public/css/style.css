@@ -17,6 +17,7 @@ header {
 
 #container {
     flex: 0 0 80%;
+    flex-flow: column;
 }
 
 #side-bar {
@@ -24,7 +25,28 @@ header {
     border-left: 1px solid #727272;
 }
 
-.image_size_m {
-    width: 300px;
-    height: 200px;
+.mark {
+    width: 50px;
+    height: 50px;
+}
+
+/*top*/
+input[type="text"] {
+    width: 230px;
+    /*--幅--*/
+    padding: 10px;
+    /*--余白--*/
+    font-size: 16px;
+    /*--文字サイズ--*/
+    border: solid 2px #cccccc;
+    /*--ボーダー線--*/
+    border-radius: 5px;
+    /*--角丸--*/
+    height: 10px;
+}
+
+/*送信ボタン*/
+button[type="submit"] {
+    width: 30px;
+    height: 30px;
 }

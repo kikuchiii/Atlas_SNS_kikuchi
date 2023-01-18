@@ -12,7 +12,7 @@ class PostsController extends Controller
     //
     public function index()//表示用
     {
-     $list = \DB::table('posts')->get();
+     $list = \DB::table('posts')->get();//登録したものを引っ張ってくる
         return view('posts.index',['list' => $list]);//ビューファイルを引っ張ってくる
     }
     public function create(Request $request)//新規投稿処理

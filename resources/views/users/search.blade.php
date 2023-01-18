@@ -15,18 +15,22 @@
 @csrf
     <div class="form-group">
     {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
+    @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
+     {{ $search_result }}
+     @endif
         </div>
-    <button type="submit"><img src="./images/post.png" alt="送信" /></button>
+    <button type="submit"><img src="{{ asset('./images/post.png' ) }}"></button>
     {!! Form::close() !!}
     </div>
 @foreach ($list as $list)
 @if ($list->id !== Auth::user()->id)
      <tr>
-        <img class="mark" src="./images/icon3.png" alt="username">
+        <img class="mark" src="{{ asset('./images/icon3.png ') }}">
         <td>{{ $list->username }}</td>
     </tr>
     @endif
     @endforeach
+
 </body>
 
 @endsection

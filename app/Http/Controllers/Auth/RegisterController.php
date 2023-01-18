@@ -48,7 +48,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)//49行目から56にかけてバリデーションを行う
     {
-        return Validator::make($data, [
+        return Validator::make($data, [ //それぞれの入力項目に対してどのようなチェックを行うかを記述している。
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
@@ -63,7 +63,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create([//Users テーブルへの登録を行っています。
             'username' => $data['username'],
             'mail' => $data['mail'],
             'password' => bcrypt($data['password']),
@@ -78,7 +78,9 @@ class RegisterController extends Controller
     public function register(Request $request){
         if($request->isMethod('post')){//引数に指定した文字列とHTTP動詞が一致するか調べられる
             $data = $request->input();//入力値を連想配列として取得できる
-
+            //dd($data);
+            // セッションへデータを保存する
+            $request->session()->put('username',$data['username']);
             $this->create($data);//createメソッドの処理が行われる
             return redirect('added');
         }

@@ -25,7 +25,7 @@
         <h1><a href="/top"><img src="./images/atlas.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
+                    <p> {{ Auth::user()->username }} さん<img src="./images/arrow.png"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
