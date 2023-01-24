@@ -16,21 +16,23 @@ class UsersController extends Controller
     }
     public function update(Request $request)
     {
-        $username = Auth::user();
-        $mail = $request->input('mail');
-        $password = $request->input('password');
-        $bio = $request->input('bio');
-        $images = $request->input('images');
+        $user = Auth::user();
+        $user->username = $request->input('username');
+        $user->mail = $request->input('mail');
+        $user->password = $request->input('password');
+        $user->bio = $request->input('bio');
+        $user->images = $request->input('images');
 
      $list = DB::table('users')
      ->where('id', Auth::user())//条件を追記　ログインしてる人のID
      ->update([
-                'username' => $username->Auth::user()->username,
-                'mail' => $mail->Auth::user()->mail,
-                'password' => $password->Auth::user()->password,
-                'bio' => $bio->Auth::user()->bio,
-                'images' => $images->Auth::user()->images]);//エラーが発生　1/19
-                //dd($username);
+                'username' => $user->username,
+                'mail' => $user->mail,
+                'password' => $user->password,
+                'bio' => $user->bio,
+                'images' => $user->images]);
+                //dd($user->username);
+
                 return redirect('/top');
     }
 
