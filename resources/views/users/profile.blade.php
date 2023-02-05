@@ -18,7 +18,8 @@
 <input type="text" name="bio" value="{{ Auth::user()->bio }}" >
 
 {{ Form::label('icon images') }}
-<input type="text" name="image" value="{{ Auth::user()->images }}" >
+<form method='POST'  action="/store" enctype="multipart/form-data"><!--ファイルを扱うときに記載する-->
+  @csrf
 
 {{ Form::submit('登録') }}
 {!! Form::close() !!}

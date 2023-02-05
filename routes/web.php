@@ -35,7 +35,8 @@ Route::post('post/create','PostsController@create');//投稿を押したとき �
 Route::get('post/{id}/delete', 'PostsController@delete');//11/13追加（削除機能）
 //プロフィール編集
 Route::get('/profile','UsersController@profile');
-route::post('users/update', 'UsersController@update');
+Route::post('users/update', 'UsersController@update');
+
 
 //ユーザー検索
 Route::get('/search','UsersController@search');//検索欄に入力した文字を含むログインユーザー以外のユーザーを全員表示する

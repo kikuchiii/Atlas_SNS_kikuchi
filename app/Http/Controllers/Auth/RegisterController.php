@@ -53,6 +53,12 @@ class RegisterController extends Controller
             'mail' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
         ]);
+        if($data->fails()){
+//バリデーションに引っかかった場合の処理
+return redirect('posts.index')
+->withErrors($data)
+->withInput();
+        }
     }
 
     /**

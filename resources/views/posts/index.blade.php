@@ -34,6 +34,7 @@
     {{ $list->created_at }}
     <a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
     @endforeach
+
 </body>
 
 @endsection

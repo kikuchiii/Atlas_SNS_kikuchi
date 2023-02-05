@@ -8,31 +8,36 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Hash;
+
 class UsersController extends Controller
 {
     //
-    public function profile(){
+    public function profile()
+    {
         return view('users.profile')->with('user', Auth::user());
     }
     public function update(Request $request)
     {
         $user = Auth::user();
+        //画像の名前だけデータベースに入れるようにしている
+        //$image = $request->file('iconimage')->store('public/images');
+
         $user->username = $request->input('username');
         $user->mail = $request->input('mail');
         $user->password = $request->input('password');
         $user->bio = $request->input('bio');
-        $user->images = $request->input('images');
+
 
      $list = DB::table('users')
-     ->where('id', Auth::user())//条件を追記　ログインしてる人のID
+     ->where('id', Auth::id())//条件を追記　ログインしてる人のID
      ->update([
                 'username' => $user->username,
                 'mail' => $user->mail,
-                'password' => $user->password,
+                'password' => Hash::make($user->password),
                 'bio' => $user->bio,
-                'images' => $user->images]);
+                ]);
                 //dd($user->username);
-
                 return redirect('/top');
     }
 
@@ -55,5 +60,6 @@ class UsersController extends Controller
       'list' => $list,
      'search_result' => $search_result
     ]);//user.searchを表示　blade側で使えるように追記
+
     }
-    }
+}
