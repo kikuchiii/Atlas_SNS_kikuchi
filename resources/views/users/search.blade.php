@@ -25,12 +25,24 @@
 @foreach ($list as $list)
 @if ($list->id !== Auth::user()->id)
      <tr>
-        <img class="mark" src="{{ asset('./images/icon3.png ') }}">
+        <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
         <td>{{ $list->username }}</td>
+        @if(Auth::user()->isFollowing($list->id))<!---->
+<form action="{{ route('search.unfollow', $list->id) }}" method="POST">
+    {{ csrf_field() }}
+    {{ method_field('DELETE') }}
+
+        <td><button type="submit">フォロー解除</button></td>
+</form>
+        @else
+    <form action="{{ route('search.follow', $list->id) }}" method="POST">
+    {{ csrf_field() }}
+        <td>><button type="submit">フォローする</button></td>
+        </form>
+@endif
     </tr>
     @endif
     @endforeach
-
 </body>
 
 @endsection

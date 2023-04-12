@@ -41,7 +41,7 @@ class UsersController extends Controller
                 return redirect('/top');
     }
 
-    public function search()
+    public function search()//ログインユーザー以外のユーザーを表示する機能
     {
     $list = \DB::table('users')->get();//usersテーブルからすべてのレコード情報をゲットする  全員のユーザーが入っている
      $user = Auth::user(); //12/23 追記

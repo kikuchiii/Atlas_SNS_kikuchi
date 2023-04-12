@@ -31,7 +31,9 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
-Route::post('post/create','PostsController@create');//投稿を押したとき データを作成しデータベースに保存する　同じURLのルーティングが2つあると下のURLが読み込まれる
+//Route::post('post/validator','PostsController@validator');//投稿を押したとき データを作成しデータベースに保存する　同じURLのルーティングが2つあると下のURLが読み込まれる
+//Route::post('post/create','PostsController@create');
+Route::post('post/creation','PostsController@creation');
 Route::get('post/{id}/delete', 'PostsController@delete');//11/13追加（削除機能）
 //プロフィール編集
 Route::get('/profile','UsersController@profile');
@@ -42,8 +44,10 @@ Route::post('users/update', 'UsersController@update');
 Route::get('/search','UsersController@search');//検索欄に入力した文字を含むログインユーザー以外のユーザーを全員表示する
 Route::post('users/searching','UsersController@searching');//ユーザー検索の結果一覧を表示する
 
-
+//フォロー関連
 Route::get('/follow-list','followsController@followList');
+Route::post('follow/{list}/follow','followsController@follow')->name('search.follow');
+Route::delete('follow/{list}/unfollow','followsController@unfollow')->name('search.unfollow');
 Route::get('/follower-list','followsController@followerList');
 
 //ログアウト

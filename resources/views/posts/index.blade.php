@@ -13,7 +13,7 @@
   <body>
 <h2>機能を実装していきましょう。</h2>
 <div class="page-header">新しく投稿をする</div>
-{!! Form::open(['url' => 'post/create']) !!} <!--post/createにフォームの値を送る-->
+{!! Form::open(['url' => 'post/creation']) !!} <!--post/createにフォームの値を送る-->
 @csrf
 <div class="form-group">
 <img class="mark" src="./images/icon3.png" alt="username">
@@ -34,7 +34,14 @@
     {{ $list->created_at }}
     <a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
     @endforeach
-
 </body>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @endsection
