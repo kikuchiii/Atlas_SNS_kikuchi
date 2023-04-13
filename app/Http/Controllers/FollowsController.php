@@ -18,7 +18,7 @@ class FollowsController extends Controller
     {
                 //$following_id = Auth::user()->follows()->pluck('followed_id');
                 $list = User::with('follow')
-                ->where('id', Auth::user()->id = 'following_id')
+                ->where('id', Auth::user()->id == 'following_id')
                 ->get();
                 //$list = $user->follows()->wherePivot('followed_id', true)->get();
 //whereIn('user_id', $following_id)->get();
