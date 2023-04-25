@@ -25,10 +25,68 @@ header {
     border-left: 1px solid #727272;
 }
 
-.mark {
+/* login.blade.php*/
+.btn {
+    display: inline-block;
+    /* 文字に合わせる*/
+    background-color: #186AC9;
+
+    border: #f63001 solid 1px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border-radius: 7px;
+
+}
+
+a {
+    color: #fff;
+}
+
+/* search*/
+img.mark {
     width: 50px;
     height: 50px;
 }
+
+tr td:nth-child(2) {
+    background-color: #186AC9;
+    /*display: flex;
+
+    /*flex-flow: column;*/
+}
+
+button[type="submit"] {
+    /* 文字に合わせる*/
+    background-color: #ACCEF7;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 30px;
+    border: none;
+    margin-left: 120px;
+}
+
+button[type="unfollow"] {
+    /* 文字に合わせる*/
+    background-color: #FF6633;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 30px;
+    border: none;
+    margin-left: 120px;
+}
+
+/*
+    border: #f63001 solid 1px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border-radius: 7px;
+    margin-right: 4%;
+    box-sizing: border-box;
+    writing-mode: vertical-rl;
+
+}*/
 
 /*top*/
 input[type="text"] {
@@ -45,8 +103,20 @@ input[type="text"] {
     height: 10px;
 }
 
-/*送信ボタン*/
+/*img {
+    width: 40px;
+    height: 40px;
+}*/
+
+/*search.blade*/
+/*送信ボタン
 button[type="submit"] {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+}
+*/
+button[type="search"] {
+    width: 40px;
+    height: 40px;
+    margin: 20px 0 0 20px;
 }

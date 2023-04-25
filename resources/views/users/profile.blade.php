@@ -21,7 +21,7 @@
 <form method='POST'  action="/store" enctype="multipart/form-data"><!--ファイルを扱うときに記載する-->
   @csrf
 
-{{ Form::submit('登録') }}
+{{ Form::submit('更新') }}
 {!! Form::close() !!}
 
 

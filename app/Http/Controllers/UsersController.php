@@ -62,4 +62,9 @@ class UsersController extends Controller
     ]);//user.searchを表示　blade側で使えるように追記
 
     }
+
+    public function yourprofile(){
+
+    }
+
 }

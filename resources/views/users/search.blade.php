@@ -19,9 +19,9 @@
      {{ $search_result }}
      @endif
         </div>
-    <button type="submit"><img src="{{ asset('./images/post.png' ) }}"></button>
+    <button type="search"><img src="{{ asset('./images/post.png' ) }}"></button>
     {!! Form::close() !!}
-    </div>
+
 @foreach ($list as $list)
 @if ($list->id !== Auth::user()->id)
      <tr>
@@ -32,7 +32,7 @@
     {{ csrf_field() }}
     {{ method_field('DELETE') }}
 
-        <td><button type="submit">フォロー解除</button></td>
+        <td><button type="unfollow">フォロー解除</button></td>
 </form>
         @else
     <form action="{{ route('search.follow', $list->id) }}" method="POST">

@@ -18,7 +18,7 @@
 <div class="form-group">
 <img class="mark" src="./images/icon3.png" alt="username">
 {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
-        </div>
+</div>
  <button type="submit"><img src="./images/post.png" alt="送信" /></button>
 {!! Form::close() !!}
     </div>
@@ -26,13 +26,20 @@
     <td></td>
     </tr>
     <h2>admin</h2>
-     <button type="submit"><img src="./images/post.png" alt="送信" /></button>
+     <button type="submit"><img src="./images/post.png" alt="送信" />
+    </button>
     @foreach ($list as $list)
     {{ $list->id }}
     {{ $list->user_id }}
     {{ $list->post }}
     {{ $list->created_at }}
     <a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+    @endforeach
+
+    @foreach ($posts as $post)
+
+    {{ $post->user_id }}
+    {{ $post->post }}
     @endforeach
 </body>
 @if ($errors->any())

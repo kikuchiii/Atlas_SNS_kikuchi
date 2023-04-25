@@ -12,6 +12,10 @@ class Post extends Model
     //$user = User::find(1);
     //foreach ($user->posts as $post) {
     //dd($post->pivot->following->follow); //中間テーブルにアクセスする
+public function user() {
+        return $this->belongsTo(User::class);//1対多
+
     }
+}
  //}
 //}

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Post;
 
+use App\User;
+
 use Validator;
 
 class PostsController extends Controller
@@ -16,7 +18,11 @@ class PostsController extends Controller
     public function index()//表示用
     {
      $list = \DB::table('posts')->get();//テーブルからレコード情報取得
-        return view('posts.index',['list' => $list]);//ビューファイルを表示
+
+        $following_id = Auth::user()->follows()->pluck('followed_id');
+        // フォローしているユーザーのidを元に投稿内容を取得
+  $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファイルを表示
     }
 //$list = Post::orderBy('created_at', 'desc')->get();
 
@@ -43,7 +49,7 @@ class PostsController extends Controller
 
         public function creation(Request $request)//バリデーション
         {
-            if($request->isMethod('post')){
+            if($request->isMethod('post')){ //post通信でリクエストが送られてきたら
             $user_id = Auth::id();
             $post = $request->input('newPost');
             $validator = $this->validator($post);

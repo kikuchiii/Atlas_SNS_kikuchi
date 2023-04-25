@@ -33,7 +33,7 @@ class User extends Authenticatable
     public function followers()
     {
 //userモデルのデータを取得する
-    return $this->belongsToMany(User::class,'follows','followed_id','following_id')->withPivot('followed_id');// 追加する//　3:自分　4:自分をフォローしている
+    return $this->belongsToMany(User::class,'follows','followed_id','following_id');//->withPivot('following_id');// 追加する//　3:自分　4:自分をフォローしている
 //
     //$user = User::find(1);
 
@@ -47,7 +47,9 @@ public function follows()//自分をフォローしている側
 {
     return $this->belongsToMany(User::class,'follows','following_id','followed_id');
 }
-
+public function posts() {
+        return $this->hasMany(Post::class);//1対多
+}
 // フォローする 3/16追加
     public function follow(Int $user_id)
     {

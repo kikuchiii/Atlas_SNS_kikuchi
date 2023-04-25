@@ -39,6 +39,10 @@ Route::get('post/{id}/delete', 'PostsController@delete');//11/13追加（削除�
 Route::get('/profile','UsersController@profile');
 Route::post('users/update', 'UsersController@update');
 
+//相手のプロフィール
+Route::get('/yourprofile','UsersController@yourprofile');
+
+
 
 //ユーザー検索
 Route::get('/search','UsersController@search');//検索欄に入力した文字を含むログインユーザー以外のユーザーを全員表示する
@@ -49,6 +53,9 @@ Route::get('/follow-list','followsController@followList');
 Route::post('follow/{list}/follow','followsController@follow')->name('search.follow');
 Route::delete('follow/{list}/unfollow','followsController@unfollow')->name('search.unfollow');
 Route::get('/follower-list','followsController@followerList');
+
+//フォロー数カウント
+Route::get('/followCounts','followsController@followCounts');
 
 //ログアウト
 Route::get('/logout','Auth\LoginController@logout');

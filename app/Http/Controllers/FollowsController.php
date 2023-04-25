@@ -16,40 +16,31 @@ class FollowsController extends Controller
     public function followList() //ログインしているユーザーがフォローしているユーザーを表示する機能
     //followsテーブルのレコードを取得
     {
-                //$following_id = Auth::user()->follows()->pluck('followed_id');
-                $list = User::with('follow')
-                ->where('id', Auth::user()->id == 'following_id')
+                $following_id = Auth::user()->follows()->pluck('followed_id');//フォローしているidが登録されているカラム名
+                $list = User::whereIn('id', $following_id)
                 ->get();
+                //'<>', $user_id
                 //$list = $user->follows()->wherePivot('followed_id', true)->get();
 //whereIn('user_id', $following_id)->get();
 
                 //dd($list);
         //$following_id = Auth::user()->follows()->pluck('followed_id');
         //$followed_id = Follow::orderBy('updated_at', 'desc')
-        //->get();
-        //$list = \DB::table('users')->get();//リレーションを使う場合はDBデータを取得するのではなくFollowクラスからデータを取得する。なので削除予定
          //Follows::create(['post' => $post]);
         //return view('follows.followList', compact('post'));
         return view('follows.followList', ['list' => $list]);
         //$list = Post::orderBy('created_at', 'desc')->get();
     }
-    //public function create()
-    //{
-        //$followed_id =
-        //\DB::table('follows')->insert([
-        //'followed_id' => $followed_id,
-       //]);
-    //}
 
     public function followerList()
     {
         //followsテーブルのレコードを取得
         $followed_id = Auth::user()->follows()->pluck('followed_id');
         //$followed_users = User::orderBy('updated_at','desc')->whereIn('user_id',$followed_id)->get();
-        $list = User::query()->whereIn('id', Auth::user()->follows()->pluck('followed_id'))->latest()->get();
-
-        return view('follows.followerList',
-        compact('list'));
+        $followed = User::whereIn('id', $followed_id)
+        ->get();
+//dd($followed);
+        return view('follows.followerList',['followed' => $followed]);
     }
 
         // フォロー
@@ -88,4 +79,10 @@ class FollowsController extends Controller
         return redirect('users.search');
     }
 
+    public function followCounts(){
+  // WHEREでpostsテーブルのuser_idカラムとログインしているユーザーのidが一致している投稿を取得
+  $followCounts = User::whereIn('id', $following_id)->get();
+  return view('layouts.login',['followCounts' => $followCounts]);
+  //return view('yyyy', compact('posts'));
+}
 }
