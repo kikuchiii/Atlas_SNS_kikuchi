@@ -34,6 +34,7 @@ class User extends Authenticatable
     {
 //userモデルのデータを取得する
     return $this->belongsToMany(User::class,'follows','followed_id','following_id');//->withPivot('following_id');// 追加する//　3:自分　4:自分をフォローしている
+    //フォロアーを探すときはこちらのリレーションを使う
 //
     //$user = User::find(1);
 
@@ -73,4 +74,6 @@ public function posts() {
     {
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['follows.id']);
     }
+
+
 }

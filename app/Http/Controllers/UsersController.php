@@ -63,8 +63,14 @@ class UsersController extends Controller
 
     }
 
-    public function yourprofile(){
+    public function yourprofile($list)
+    {
+        $users= User::query()->where('username',$list)->pluck('id');
 
+        //$posts = Post::with('user')->whereIn('posts.user_id', $users)->get();
+//上記は、postsテーブルのuser_idと前述で定義した$usersが一致する投稿を取得するために記述した。
+return view ('users.yourprofile', [
+    'users' => $users
+]);
     }
-
 }

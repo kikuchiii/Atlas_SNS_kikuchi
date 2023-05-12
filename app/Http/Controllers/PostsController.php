@@ -21,7 +21,7 @@ class PostsController extends Controller
 
         $following_id = Auth::user()->follows()->pluck('followed_id');
         // フォローしているユーザーのidを元に投稿内容を取得
-  $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+$posts = Post::all();
 return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファイルを表示
     }
 //$list = Post::orderBy('created_at', 'desc')->get();
@@ -31,14 +31,14 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
         //$post = $request->input('newPost');
 //バリデーションルール定義
 //dd($request);
-        return Validator::make($post->all(),[
-            'post' => 'required|min:3|max:200',
+        return Validator::make($post,[
+            'newPost' => 'required|min:3|max:200',
         ]);
     }
     protected function create(array $post)
     //投稿機能
 {
-    $post = $request->input('newPost');//いらない可能性あり（2/25）
+    //$post = $request->input();//いらない可能性あり（2/25）
     $user_id = Auth::id();//いらない可能性アリ
     //$user_id = Auth::id();//ユーザーIDの受け渡し
         \DB::table('posts')->insert([
@@ -51,7 +51,7 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
         {
             if($request->isMethod('post')){ //post通信でリクエストが送られてきたら
             $user_id = Auth::id();
-            $post = $request->input('newPost');
+            $post = $request->input();
             $validator = $this->validator($post);
             //$validator = $this->validator($data);
             //dd($validator);
@@ -62,10 +62,17 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
                 ->withInput();// 送信されたフォームの値をInput::old()へ引き継ぐ
 
         } else {//成功したときの処理
-            //dd($request);
+            //dd($user_id);
             //成功したときの記述
-            $this->create($post);
-            return redirect('index');
+            Post::create([
+                'post' => $post[
+                    'newPost'
+                ],
+                'user_id' => $user_id //エラー原因
+            ]);
+//dd($user_id);
+            //$this->create($post);
+            return redirect('/top');
             }
 
         //dd($request);
@@ -87,7 +94,9 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
        }
        return view('posts.index');
     }
+public function update(){
 
+}
 
     public function delete($id)
     {

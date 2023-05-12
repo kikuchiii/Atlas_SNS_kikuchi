@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
+use App\Post;
+
 use App\Follow;
 
 class FollowsController extends Controller
@@ -19,28 +21,23 @@ class FollowsController extends Controller
                 $following_id = Auth::user()->follows()->pluck('followed_id');//フォローしているidが登録されているカラム名
                 $list = User::whereIn('id', $following_id)
                 ->get();
-                //'<>', $user_id
-                //$list = $user->follows()->wherePivot('followed_id', true)->get();
-//whereIn('user_id', $following_id)->get();
-
+                $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
                 //dd($list);
-        //$following_id = Auth::user()->follows()->pluck('followed_id');
         //$followed_id = Follow::orderBy('updated_at', 'desc')
          //Follows::create(['post' => $post]);
-        //return view('follows.followList', compact('post'));
-        return view('follows.followList', ['list' => $list]);
-        //$list = Post::orderBy('created_at', 'desc')->get();
+        return view('follows.followList', ['list' => $list,'posts' => $posts]);
     }
 
     public function followerList()
     {
         //followsテーブルのレコードを取得
-        $followed_id = Auth::user()->follows()->pluck('followed_id');
+        $followed_id = Auth::user()->followers()->pluck('following_id');
         //$followed_users = User::orderBy('updated_at','desc')->whereIn('user_id',$followed_id)->get();
         $followed = User::whereIn('id', $followed_id)
         ->get();
+        $followedposts = Post::with('user')->whereIn('posts.user_id', $followed_id)->get();
 //dd($followed);
-        return view('follows.followerList',['followed' => $followed]);
+        return view('follows.followerList',['followed' => $followed,'followedposts' => $followedposts]);
     }
 
         // フォロー
@@ -79,10 +76,18 @@ class FollowsController extends Controller
         return redirect('users.search');
     }
 
-    public function followCounts(){
+    //public function followCounts(){
   // WHEREでpostsテーブルのuser_idカラムとログインしているユーザーのidが一致している投稿を取得
-  $followCounts = User::whereIn('id', $following_id)->get();
-  return view('layouts.login',['followCounts' => $followCounts]);
+  //$following_id = Auth::user()->follows()->pluck('followed_id');
+  //$followCounts = User::whereIn('id', $following_id)->get();
+  //return view('layouts.login',['followCounts' => $followCounts]);
   //return view('yyyy', compact('posts'));
+//}
+//フォロー数カウント
+public function show(User $user, Follow $follow){
+    $follower_count = $follow->getFollowerCount($user->id);
+
+    return view('layouts.login',['follower_count' => $follower_count,
+    ]);
 }
 }

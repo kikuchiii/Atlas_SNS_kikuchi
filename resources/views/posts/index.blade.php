@@ -17,7 +17,7 @@
 @csrf
 <div class="form-group">
 <img class="mark" src="./images/icon3.png" alt="username">
-{!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
+{!! Form::input('text', 'newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) !!}
 </div>
  <button type="submit"><img src="./images/post.png" alt="送信" /></button>
 {!! Form::close() !!}

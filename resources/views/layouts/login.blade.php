@@ -22,17 +22,17 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="./images/atlas.png"></a></h1>
+        <h1><a href="/top"><img src="./images/atlas.png" class="example1"></a></h1>
             <div id="">
                 <div id="">
-                    <p> {{ Auth::user()->username }} さん<img src="./images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
-            </div>
+                    <p class= "roginuser"> {{ Auth::user()->username }} さん<img src="./images/arrow.png"></p>
+                    <input id="check-a" type="checkbox" class="check">
+                    <label class="label "for="check-a"></label>
+                    <p class="text">
+                    <a href="/top">HOME</a>
+                    <a href="/profile">プロフィール編集</a>
+                    <a href="/logout">ログアウト</a>
+            </p>
         </div>
     </header>
     <div id="row">
@@ -44,14 +44,16 @@
                 <p>〇〇さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>{{ $followCounts->count() }}名</p>
+
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
+
                 <div>
                 <p>フォロワー数</p>
                 <p>〇〇名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+        <span>{{ $follower_count }}</span>
             </div>
             <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>

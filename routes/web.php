@@ -40,7 +40,7 @@ Route::get('/profile','UsersController@profile');
 Route::post('users/update', 'UsersController@update');
 
 //相手のプロフィール
-Route::get('/yourprofile','UsersController@yourprofile');
+Route::get('yourprofile/{list}/yourprofile','UsersController@yourprofile');
 
 
 
@@ -55,7 +55,9 @@ Route::delete('follow/{list}/unfollow','followsController@unfollow')->name('sear
 Route::get('/follower-list','followsController@followerList');
 
 //フォロー数カウント
-Route::get('/followCounts','followsController@followCounts');
+//Route::get('/followCounts','followsController@followCounts');
+//フォロー数カウント(5/9)
+Route::get('follows/show','followsController@show');
 
 //ログアウト
 Route::get('/logout','Auth\LoginController@logout');
