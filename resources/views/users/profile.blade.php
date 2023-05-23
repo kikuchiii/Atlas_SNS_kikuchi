@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>新規ユーザー登録</h2>
-{!! Form::open(['url' => 'users/update']) !!} <!--post/createにフォームの値を送る-->
+{!! Form::open(['url' => 'users/update','class' => 'profile']) !!} <!--post/createにフォームの値を送る-->
 
 {{ Form::label('username') }} <!--フォームの中でフォームの項目名と構成部品（チェックボックス、ラジオボタンなど）を関連付けるためのタグ-->
 <input type="text" name="username" value="{{Auth::user()->username}}" >

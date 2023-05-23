@@ -11,7 +11,7 @@
  <!--変数は投稿からリレーションを経由する -->
  <div class="follow">
      <tr>
-        <td><a href="/yourprofile"><img src="{{ asset('./images/icon3.png ') }}"></a></td>
+        <td><a href="/user/{{$list->username}}/yourprofile"><img src="{{ asset('./images/icon3.png ') }}"></a></td>
         <td>{{ $list->username }}</td>
         <td>{{ $list->user_id }}</td>
         </div>

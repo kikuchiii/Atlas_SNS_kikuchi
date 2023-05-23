@@ -243,3 +243,13 @@ button[type="search"] {
     margin: 0;
     padding: 40px;
 }
+
+/* myprofile*/
+.profile {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+label {
+    color: #333;
+}

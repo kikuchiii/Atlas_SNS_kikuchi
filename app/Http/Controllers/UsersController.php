@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Hash;
 
+use App\User;
+
+use App\Post;
+
 class UsersController extends Controller
 {
     //
@@ -61,16 +65,27 @@ class UsersController extends Controller
      'search_result' => $search_result
     ]);//user.searchを表示　blade側で使えるように追記
 
+
     }
 
-    public function yourprofile($list)
+    public function yourprofile($username)
     {
-        $users= User::query()->where('username',$list)->pluck('id');
+        //$post = User::where('id', $id)->first();
+        //$users= User::query()->where('username',$list)->pluck('id');
 
         //$posts = Post::with('user')->whereIn('posts.user_id', $users)->get();
 //上記は、postsテーブルのuser_idと前述で定義した$usersが一致する投稿を取得するために記述した。
-return view ('users.yourprofile', [
-    'users' => $users
-]);
+//$following_id = Auth::user()->follows()->pluck('followed_id');//フォローしているidが登録されているカラム名
+                //$list = User::whereIn('id', $following_id)
+                //->get();
+                //$posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+
+                //$profile = User::whereIn('username', $username)->get();
+                $profile = User::whereIn('username',$username)->first('id');
+                //dd($profile);
+                //$profileposts = Post::query()->where('posts.user_id',$username)->get('id');
+//var_dump($profileposts);
+return view ('users.yourprofile',[
+    'profile' => $profile ]);
     }
 }
