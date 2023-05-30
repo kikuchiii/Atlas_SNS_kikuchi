@@ -33,7 +33,8 @@
     {{ $list->user_id }}
     {{ $list->post }}
     {{ $list->created_at }}
-    <a class="btn btn-danger" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+    <a href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')" class="btn btn-danger"><img src="./images/trash-h.png"></a>
+
     @endforeach
 
     @foreach ($posts as $post)

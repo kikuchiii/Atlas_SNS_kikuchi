@@ -57,15 +57,34 @@ img.example1 {
     margin-right: 0;
     margin-left: auto;
     text-align: right;
+    border: 2px solid #000000;
 
 
+}
 
+.text a:nth-child(odd) {
+    background-color: #fff;
+    color: #000000;
+    padding: 20px 25px;
+    border-bottom: solid 1px #000000;
+    height: 100px;
+    /*枠線・下*/
 }
 
 .text a:nth-child(2) {
     background-color: #000080;
     color: #fff;
     padding: 20px 25px;
+    border-bottom: solid 1px #000000;
+}
+
+
+
+.text a:nth-child(1) {
+    color: #000000;
+    padding: 20px 0;
+    font-size: 15px;
+
 }
 
 /* クリック時のスタイル */
@@ -111,8 +130,6 @@ img.example1 {
     display: inline-block;
     /* 文字に合わせる*/
     background-color: #186AC9;
-
-    border: #f63001 solid 1px;
     padding: 10px 10px;
     font-size: 1rem;
     letter-spacing: 1px;
@@ -121,12 +138,23 @@ img.example1 {
 }
 
 a {
-    color: #808080;
-    padding: 25px 0;
-    font-size: 25px;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 15px;
+}
+
+.btn-danger {
+    width: 30px;
+    height: 30px;
 }
 
 /* search*/
+.search-group {
+    border-bottom: 3px solid #dcdcdc;
+}
+
+
+
 img.mark {
     width: 50px;
     height: 50px;
@@ -141,7 +169,18 @@ tr td:nth-child(2) {
 
 button[type="submit"] {
     /* 文字に合わせる*/
-    background-color: #ACCEF7;
+
+    color: #fff;
+    border-radius: 5px;
+
+    border: none;
+    width: 65px;
+    height: 65px;
+}
+
+button[type="follow"] {
+    /* 文字に合わせる*/
+    background-color: #0099CC;
     color: #fff;
     border-radius: 5px;
     padding: 10px 30px;
@@ -172,18 +211,22 @@ button[type="unfollow"] {
 }*/
 
 /*top*/
-input[type="text"] {
-    width: 230px;
+.Form {
+    width: 400px;
     /*--幅--*/
     padding: 10px;
     /*--余白--*/
     font-size: 16px;
     /*--文字サイズ--*/
-    border: solid 2px #cccccc;
+    border: 0px none;
     /*--ボーダー線--*/
-    border-radius: 5px;
+
     /*--角丸--*/
     height: 10px;
+}
+
+.form-group {
+    border-bottom: 3px solid #dcdcdc;
 }
 
 /*img {
@@ -251,5 +294,42 @@ button[type="search"] {
 }
 
 label {
-    color: #333;
+    color: #244440;
+}
+
+input[type="text"] {
+    width: 400px;
+    /*--幅--*/
+    padding: 10px;
+    /*--余白--*/
+    font-size: 16px;
+    /*--文字サイズ--*/
+    border: solid 2px #cccccc;
+    /*--ボーダー線--*/
+    border-radius: 5px;
+    /*--角丸--*/
+    height: 10px;
+}
+
+
+/*相手のプロフィール*/
+
+ul {
+    margin: 0;
+    /*余白をリセット*/
+    padding: 0;
+    /*余白をリセット*/
+    list-style-type: none;
+    /*マーカーを削除*/
+    border-top: solid 1px #3dbfb8;
+    /*枠線・上*/
+}
+
+ul li {
+    padding: 10px 20px;
+    /*余白*/
+    background: #e3f6f5;
+    /*背景色*/
+    border-bottom: solid 1px #a9a9a9;
+    /*枠線・下*/
 }

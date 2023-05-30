@@ -2,11 +2,13 @@
 
 @section('content')
 <h2>相手のプロフィール</h2>
+<ul>
+<li><img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
 
-<img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
-
+@foreach($profile as $profile)
 <span>{{ $profile->username }}</span>
-
+<p>bio<span>{{ $profile->bio }}</span></p>
+@endforeach
 
 @if(Auth::user()->isFollowing($profile->id))<!---->
 <form action="{{ route('search.unfollow', $profile->id) }}" method="POST">
@@ -21,7 +23,11 @@
         <td>><button type="submit">フォローする</button></td>
         </form>
 @endif
-    </tr>
+</li>
+
+</ul>
+
+
 
 {!! Form::open(['url' => 'users/update','class' => 'profile']) !!} <!--post/createにフォームの値を送る-->
 

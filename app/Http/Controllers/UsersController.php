@@ -68,7 +68,7 @@ class UsersController extends Controller
 
     }
 
-    public function yourprofile($username)
+    public function yourprofile($id)
     {
         //$post = User::where('id', $id)->first();
         //$users= User::query()->where('username',$list)->pluck('id');
@@ -81,11 +81,11 @@ class UsersController extends Controller
                 //$posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
 
                 //$profile = User::whereIn('username', $username)->get();
-                $profile = User::whereIn('username',$username)->first('id');
+                $profile = User::where('id',$id)->get();
                 //dd($profile);
-                //$profileposts = Post::query()->where('posts.user_id',$username)->get('id');
+                $post = Post::where('posts.user_id', $id)->get();
 //var_dump($profileposts);
 return view ('users.yourprofile',[
-    'profile' => $profile ]);
+    'profile' => $profile, 'post' =>  $post]);
     }
 }

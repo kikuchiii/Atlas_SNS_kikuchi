@@ -9,10 +9,10 @@
 {{ Form::label('mail adress') }}
 <input type="text" name="mail" value="{{Auth::user()->mail}}" >
 {{ Form::label('password') }}
-<input type="text" name="password" value="{{ Auth::user()->password }}" >
+<input type="text" name="password" >
 
 {{ Form::label('password confirm') }}
-<input type="text" name="password confirm" value="{{ Auth::user()->password }}" >
+<input type="text" name="password confirm" value="" >
 
 {{ Form::label('bio') }}
 <input type="text" name="bio" value="{{ Auth::user()->bio }}" >

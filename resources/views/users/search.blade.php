@@ -13,14 +13,15 @@
 <body>
     {!! Form::open(['url' => 'users/searching']) !!}
 @csrf
-    <div class="form-group">
+    <div class="search-group">
     {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
     @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
      {{ $search_result }}
      @endif
-        </div>
+
     <button type="search"><img src="{{ asset('./images/post.png' ) }}"></button>
     {!! Form::close() !!}
+</div>
 
 @foreach ($list as $list)
 @if ($list->id !== Auth::user()->id)
@@ -37,7 +38,7 @@
         @else
     <form action="{{ route('search.follow', $list->id) }}" method="POST">
     {{ csrf_field() }}
-        <td>><button type="submit">フォローする</button></td>
+        <td>><button type="follow">フォローする</button></td>
         </form>
 @endif
     </tr>

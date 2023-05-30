@@ -40,7 +40,7 @@ Route::get('/profile','UsersController@profile');
 Route::post('users/update', 'UsersController@update');
 
 //相手のプロフィール
-Route::get('user/{username}/yourprofile','UsersController@yourprofile');
+Route::get('user/{id}/yourprofile','UsersController@yourprofile');
 
 
 
