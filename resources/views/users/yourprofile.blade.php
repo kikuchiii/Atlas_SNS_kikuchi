@@ -1,53 +1,56 @@
 @extends('layouts.login')
 
 @section('content')
-<h2>相手のプロフィール</h2>
+
 <ul>
-<li><img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
-
-@foreach($profile as $profile)
-<span>{{ $profile->username }}</span>
-<p>bio<span>{{ $profile->bio }}</span></p>
-@endforeach
-
-@if(Auth::user()->isFollowing($profile->id))<!---->
-<form action="{{ route('search.unfollow', $profile->id) }}" method="POST">
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-
-        <td><button type="unfollow">フォロー解除</button></td>
-</form>
-        @else
-    <form action="{{ route('search.follow', $profile->id) }}" method="POST">
-    {{ csrf_field() }}
-        <td>><button type="submit">フォローする</button></td>
+  <div class="content2">
+    <li>
+      <div class="post-containner">
+        <!--名前-->
+        @foreach($profile as $profiles)
+      print($profile);
+        <!--変数値を表示する（$profilesは、$profile[x]からコピーしてきたデータが入っている)-->
+        <div class="pf-area">
+        <img class="profile2" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+        <p>name</p>
+        <h5 class="follow-user">{{ $profile->username }}</h5>
+      <div class="pf-area2">
+        <p>bio</p>
+        <p class="post">{{ $profile->bio }}</p>
+<!--切り替えボタン-->
+      @if(Auth::user()->isFollowing($profile->id))<!---->
+        <form action="{{ route('search.unfollow', $profile->id) }}" method="POST">
+          {{ csrf_field() }}
+          {{ method_field('DELETE') }}
+          <td><button type="unfollow">フォロー解除</button></td>
         </form>
-@endif
-</li>
+      @else
+        <form action="{{ route('search.follow', $profile->id) }}" method="POST">
+          {{ csrf_field() }}
+          <td>><button type="submit">フォローする</button></td>
+        </form>
+        @endif
+      </div>
+</div>
+      @endforeach
+      </div>
+      </div>
+      @foreach ($UserPosts as $UserPosts)
+      <div class="post-list">
+      <!--print($UserPosts);-->
+      <!--変数値を表示する（$UserPostsは、$UserPosts[x]からコピーしてきたデータが入っている)-->
+      <p>{{ $UserPosts->post }}</p>
+          <p class ="post-created_at">
+          {{ $UserPosts->created_at }}
+          </p>
+      </div>
+      @endforeach
 
-</ul>
+
+    </li>
 
 
 
-{!! Form::open(['url' => 'users/update','class' => 'profile']) !!} <!--post/createにフォームの値を送る-->
+  </ul>
 
-{{ Form::label('username') }} <!--フォームの中でフォームの項目名と構成部品（チェックボックス、ラジオボタンなど）を関連付けるためのタグ-->
-<input type="text" name="username" value="{{Auth::user()->username}}" >
-{{ Form::label('mail adress') }}
-<input type="text" name="mail" value="{{Auth::user()->mail}}" >
-{{ Form::label('password') }}
-<input type="text" name="password" value="{{ Auth::user()->password }}" >
-
-{{ Form::label('password confirm') }}
-<input type="text" name="password confirm" value="{{ Auth::user()->password }}" >
-
-{{ Form::label('bio') }}
-<input type="text" name="bio" value="{{ Auth::user()->bio }}" >
-
-{{ Form::label('icon images') }}
-<form method='POST'  action="/store" enctype="multipart/form-data"><!--ファイルを扱うときに記載する-->
-  @csrf
-
-{{ Form::submit('更新') }}
-{!! Form::close() !!}
 @endsection

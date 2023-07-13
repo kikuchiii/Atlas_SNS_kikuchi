@@ -10,6 +10,8 @@ use App\Post;
 
 use App\User;
 
+use App\Follow;
+
 use Validator;
 
 class PostsController extends Controller
@@ -17,12 +19,23 @@ class PostsController extends Controller
     //
     public function index()//表示用
     {
-     $list = \DB::table('posts')->get();//テーブルからレコード情報取得
+        //$user = Auth::user();
+        //$list = Book::find($id);
+        //$list = Post::where('user_id' , Auth::id())->first();
+        $list = Post::where('user_id' , Auth::id())->first();
+        //dd($list);
+     //$list = Post::with('user')->where('id', $user )->get();//idとログインしているユーザーが一致した投稿を取得
 
         $following_id = Auth::user()->follows()->pluck('followed_id');
         // フォローしているユーザーのidを元に投稿内容を取得
-$posts = Post::all();
-return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファイルを表示
+        $follow = User::whereIn('id', $following_id)->get();
+
+        $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+
+//$posts = Post::all();変更前
+//$posts = Post::with('user')->where('user_id', Auth::id() )->get();
+//おそらく不要な文
+return view('posts.index',['list' => $list,'follow' => $follow,'posts' => $posts]);//ビューファイルを表示
     }
 //$list = Post::orderBy('created_at', 'desc')->get();
 
@@ -61,7 +74,7 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
                 ->withErrors($validator)// Validatorインスタンスの値を$errorsへ保存
                 ->withInput();// 送信されたフォームの値をInput::old()へ引き継ぐ
 
-        } else {//成功したときの処理
+        } else {
             //dd($user_id);
             //成功したときの記述
             Post::create([
@@ -94,7 +107,16 @@ return view('posts.index',['list' => $list,'posts' => $posts]);//ビューファ
        }
        return view('posts.index');
     }
-public function update(){
+
+
+
+
+public function update(Request $request){
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        Post::where('id', $id)->update(['post' => $up_post]);
+
+        return redirect('/top');
 
 }
 

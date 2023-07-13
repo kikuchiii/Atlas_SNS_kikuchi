@@ -1,49 +1,59 @@
 @extends('layouts.login')
 
 @section('content')
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>3章CRUD実装-課題-</title>
-    </head>
-<body>
     {!! Form::open(['url' => 'users/searching']) !!}
 @csrf
     <div class="search-group">
-    {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
+    {!! Form::input('text', 'search', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
     @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
      {{ $search_result }}
      @endif
 
-    <button type="search"><img src="{{ asset('./images/post.png' ) }}"></button>
+    <button type="search"><img class="search-image" src="./images\search.png" width="50" height="50">
+</button>
     {!! Form::close() !!}
 </div>
 
-@foreach ($list as $list)
-@if ($list->id !== Auth::user()->id)
-     <tr>
-        <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
-        <td>{{ $list->username }}</td>
-        @if(Auth::user()->isFollowing($list->id))<!---->
-<form action="{{ route('search.unfollow', $list->id) }}" method="POST">
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }}
-
-        <td><button type="unfollow">フォロー解除</button></td>
-</form>
-        @else
-    <form action="{{ route('search.follow', $list->id) }}" method="POST">
-    {{ csrf_field() }}
-        <td>><button type="follow">フォローする</button></td>
-        </form>
-@endif
-    </tr>
-    @endif
+<!--div 1人分のエリア-->
+<div class="user_content">
+    @foreach ($list as $list)
+    <!--横幅を調整して中央に配置　-->
+        <div class="username-area">
+            <div class="user-image">
+                @if ($list->id !== Auth::user()->id)
+                    <tr>
+                        <div class="user-container">
+                            <!--ユーザー画像-->
+                            <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
+                            <div class="usertext">
+                                <div class="user-list">
+                                    <!--ユーザーネーム-->
+                                    <td class="user">{{ $list->username }}</td>
+                                </div>
+                            </div>
+                            @if(Auth::user()->isFollowing($list->id))<!---->
+                                <p class="follow-area">
+                                    <!--フォロー切り替えボタン-->
+                                    <form action="{{ route('search.unfollow', $list->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <td><button type="unfollow">フォロー解除</button></td>
+                                    </form>
+                                </p>
+                            @else
+                                <p class="follow-area">
+                                    <form action="{{ route('search.follow', $list->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <td><button type="follow">フォローする</button></td>
+                                    </form>
+                                </p>
+                            @endif
+                        </div>
+                    </tr>
+                @endif
+            </div>
+        </div>
     @endforeach
-</body>
-
+</div>
+<!--div-->
 @endsection

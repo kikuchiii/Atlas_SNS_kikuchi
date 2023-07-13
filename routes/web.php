@@ -34,7 +34,11 @@ Route::get('/top','PostsController@index');
 //Route::post('post/validator','PostsController@validator');//投稿を押したとき データを作成しデータベースに保存する　同じURLのルーティングが2つあると下のURLが読み込まれる
 //Route::post('post/create','PostsController@create');
 Route::post('post/creation','PostsController@creation');
-Route::get('post/{id}/delete', 'PostsController@delete');//11/13追加（削除機能）
+//11/13追加（削除機能）
+Route::get('post/{id}/delete', 'PostsController@delete');
+//更新機能
+Route::post('/post/update', 'PostsController@update');
+
 //プロフィール編集
 Route::get('/profile','UsersController@profile');
 Route::post('users/update', 'UsersController@update');
@@ -50,8 +54,8 @@ Route::post('users/searching','UsersController@searching');//ユーザー検索�
 
 //フォロー関連
 Route::get('/follow-list','followsController@followList');
-Route::post('follow/{list}/follow','followsController@follow')->name('search.follow');
-Route::delete('follow/{list}/unfollow','followsController@unfollow')->name('search.unfollow');
+Route::post('follow/{follow}/follow','followsController@follow')->name('search.follow');
+Route::delete('follow/{follow}/unfollow','followsController@unfollow')->name('search.unfollow');
 Route::get('/follower-list','followsController@followerList');
 
 //フォロー数カウント

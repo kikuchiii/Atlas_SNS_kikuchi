@@ -101,7 +101,8 @@ class RegisterController extends Controller
                 ->withErrors($validator)//バリデーションかけられた状態
                 ->withInput();
 
-            } else {//成功したときの記述
+            } else {
+            //成功時の処理
             $request->session()->put('username',$data['username']);
             $this->create($data);//createメソッドの処理が行われる
             return redirect('added');

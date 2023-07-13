@@ -19,13 +19,13 @@ class FollowsController extends Controller
     //followsテーブルのレコードを取得
     {
                 $following_id = Auth::user()->follows()->pluck('followed_id');//フォローしているidが登録されているカラム名
-                $list = User::whereIn('id', $following_id)
+                $follow = User::whereIn('id', $following_id)
                 ->get();
-                $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
-                //dd($list);
+                $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->orderBy('created_at','desc')->get();
+                //dd($follow);
         //$followed_id = Follow::orderBy('updated_at', 'desc')
          //Follows::create(['post' => $post]);
-        return view('follows.followList', ['list' => $list,'posts' => $posts]);
+        return view('follows.followList', ['follow' => $follow,'posts' => $posts]);
     }
 
     public function followerList()
