@@ -56,6 +56,7 @@ img.example1 {
 
 /* クリック時に表示されるテキスト */
 .text {
+
     background: #ffffff;
     align-items: center;
     margin-bottom: 10px;
@@ -70,44 +71,58 @@ img.example1 {
     margin-left: auto;
     text-align: right;
     border: 2px solid #000000;
+    width: 305px;
 
 
 }
 
 .text a:nth-child(odd) {
     background-color: #fff;
-    color: #000000;
+    color: #808080;
     padding: 20px 25px;
     border-bottom: solid 1px #000000;
     height: 100px;
     /*枠線・下*/
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
 }
+
 
 .text a:nth-child(2) {
     background-color: #000080;
     color: #fff;
     padding: 20px 25px;
     border-bottom: solid 1px #000000;
+    display: block;
+    text-decoration: none;
+
 }
+
 
 
 
 .text a:nth-child(1) {
-    color: #000000;
+    color: #808080;
     padding: 20px 0;
-    font-size: 15px;
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
 
+    line-height: 35px;
+    padding-left: 5px;
+    font-weight: normal;
 }
+
 
 /* クリック時のスタイル */
 .check:checked+.label+.text {
     position: absolute;
     top: 100px;
     right: 0;
-    height: 200px;
+    height: 295px;
     padding: 30px;
-    max-width: 500px;
-
+    width: 305px;
 }
 
 /* クリック時のスタイル */
@@ -119,6 +134,8 @@ img.example1 {
     position: absolute;
     top: 47px;
     right: 160px;
+    font-size: 20px;
+    font-family: inherit;
 }
 
 /* main content */
@@ -155,28 +172,37 @@ img.btn btn-danger {
     display: flex;
 }
 
-.content2 {
+/*ログインユーザーの名前、その投稿更新日*/
+.post-area {
     display: flex;
-    margin-top: 10px;
+    justify-content: space-between;
     padding: 0.5em 0 0.5em 1.4em;
+    margin-left: 120px;
+    margin-top: -65px;
 }
 
+img.RoginUser {
+    text-align: center;
+    margin-left: 80px;
+    margin-top: -5px;
+}
+
+
+
 .post-list {
-    border-bottom: 2px solid #d3d3d3;
+    border-top: 2px solid #d3d3d3;
 }
 
 .content3 {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .login-container label {}
 
 
-.post {
-    margin-top: -19px;
-    margin-left: 165px;
-    max-width: 700px;
-}
+.post {}
 
 .username {
     margin-left: 15px;
@@ -186,36 +212,24 @@ img.btn btn-danger {
 /*編集ボタン（画像）*/
 img.edit {
     width: 40px;
-    height: 40px;
-    margin-bottom: 20px;
-    margin-right: 85px;
 }
 
 /*(親要素)　削除ボタン（画像）*/
 .trash {
-    position: relative;
     width: 60px;
-    height: 60px;
     margin-right: 20px;
-    margin-bottom: 15px;
     cursor: pointer;
 }
 
 /*（子要素）　削除ボタン反転画像*/
 .trash img {
-    position: absolute;
-    width: 100%;
-    left: 1140px;
-    bottom: 58px;
-}
-
-.trash img:last-of-type {
-    opacity: 0;
-    transition: opacity .7s;
+    width: 50px;
+    transition: .4s;
 }
 
 /* hoverすると2枚目の画像が色相回転 */
 .trash:hover img {
+    transition: opacity .7s;
     filter: invert(100%);
 }
 
@@ -258,9 +272,15 @@ img.btn {
 
 .username-area {}
 
-.usertext {}
+.usertext {
+    margin-left: 80px;
+    max-width: 400px;
+}
 
-.user-list {}
+.user-list {
+    margin-left: -175px;
+    display: inline-block;
+}
 
 .user-image {}
 
@@ -268,6 +288,7 @@ img.btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 25px;
 }
 
 
@@ -315,7 +336,8 @@ img.mark {
     width: 50px;
     height: 50px;
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 200px;
+    background-color: #fff;
 }
 
 td .user {
@@ -340,7 +362,7 @@ button[type="follow"] {
     background-color: #0099CC;
     color: #fff;
     border-radius: 5px;
-    padding: 10px 30px;
+    padding: 5px 30px;
     border: none;
     margin: 0px 22px 50px 61px;
 }
@@ -350,7 +372,7 @@ button[type="unfollow"] {
     background-color: #EE0000;
     color: #fff;
     border-radius: 8px;
-    padding: 10px 30px;
+    padding: 5px 30px;
     border: none;
     margin: 0px 22px 50px 61px;
 }
@@ -426,6 +448,8 @@ button[type="search"] {
 
 button[type="search"] img {
     width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 /*followList（フォローリスト画面）*/
@@ -433,39 +457,40 @@ button[type="search"] img {
     flex-basis: 300px;
 }
 
+/*フォローユーザー名とその投稿の更新日*/
+.content2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0 0.5em 1.4em;
+    margin-left: 120px;
+    margin-top: -60px;
+}
+
+
 /*フォローされているユーザーネーム*/
 .follow {
+    width: 600px;
+    height: auto;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin: 19px;
-    height: 50px;
-    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 
 .follow_content {
-    display: flex;
-    margin-left: 5px;
-    width: 100px;
-}
-
-
-.follow a {}
-
-/*投稿*/
-.follow-user {
-    margin-left: 15px;
-    vertical-align: top;
-    display: inline-block;
+    margin-right: 8px;
 }
 
 .folow .td {
     margin-top: 100px;
 }
 
-.post {}
-
-margi
+.post {
+    margin-left: 143px;
+    margin-top: -10px;
+}
 
 /*.post-created_at {*/
 .followuser {
@@ -478,9 +503,22 @@ margi
     width: 50%;
 }
 
+.followuser2 {
+    border-bottom: 4px solid #dcdcdc;
+    display: flex;
+}
+
+.followuser3 {
+    border-bottom: 4px solid #dcdcdc;
+    display: flex;
+}
+
+
+
 img.followUser {
     text-align: center;
     margin-left: 80px;
+    margin-top: 20px;
 }
 
 /*上のユーザーネーム*/
@@ -495,9 +533,9 @@ img.followUser {
 }
 
 .post-created_at {
-    margin-right: 30px;
-    margin-left: 810px;
-    font-size: 15px;
+    display: flex;
+    margin-right: 40px;
+    justify-content: flex-end;
 }
 
 /* myprofile*/
@@ -544,21 +582,32 @@ img.followUser {
 
 
 
-
 .ct-block label {
     display: inline-block;
     margin-left: 320px;
     font-size: 20px;
 }
 
-.ct-block input[type="file"] {
-    width: 400px;
-    max-width: 400px;
-    padding: 10px 38px;
-    margin-bottom: 20px;
-    margin-right: 185px;
+.file_button {
     background: #F5F5F5;
+    width: 400px;
     border: 2px solid #c0c0c0;
+    margin-right: 185px;
+    max-width: 400px;
+    height: 100px;
+    padding: 35px 80px;
+    margin-bottom: 20px;
+}
+
+
+
+.ct-block input[type="file"] {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 
 input[type="file"] {
@@ -572,7 +621,6 @@ input[type="file"] {
     color: #244440;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 320px;
 }
 
 input[name="newPost"] {
@@ -600,7 +648,7 @@ input[name="newPost"] {
 
 input[type="submit"] {
     color: #fff;
-    background-color: #d34258;
+    background-color: #ff3366;
     display: inline-block;
     padding: 5px 65px;
     text-align: right;
@@ -625,9 +673,7 @@ ul {
 
 ul li {
     /*背景色*/
-    border-bottom: solid 1px #a9a9a9;
     /*枠線・下*/
-    border-bottom: 4px solid #dcdcdc;
 }
 
 img.profile2 {
@@ -673,15 +719,15 @@ img.profile2 {
 button[type="button"] a {
     color: #fff;
     font-size: 15px;
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
 }
 
 button[type="button"] {
-    margin-left: 150px;
+    margin-left: 130px;
     margin-top: 15px;
-    padding: 5px 15px;
+    padding: 5px 20px;
     margin-bottom: 15px;
-    border-radius: 8px
+    border-radius: 6px
 }
 
 button[name="search"] {
@@ -698,10 +744,11 @@ button[name="search"] {
 
 .follow-text {
     margin-left: 15px;
+    letter-spacing: 3px;
 }
 
 .count {
-    margin-right: 160px;
+    margin-right: 140px;
 }
 
 .follower-count {
@@ -711,25 +758,30 @@ button[name="search"] {
 
 /*FollowerList*/
 .title h2 {
-    position: absolute;
-    top: 130px;
-    left: 100px;
+    margin-left: 100px;
+    margin-top: 15px;
 }
 
 .follower-post-created_at {
-    margin-right: 30px;
-    font-size: 15px;
-    margin-left: 700px;
+    display: flex;
+    margin-right: 40px;
+    justify-content: flex-end;
 }
 
 .follower-post {
-    margin-top: 40px;
-    margin-left: -40px;
+    margin-left: 143px;
+    margin-top: -10px;
 }
 
+.user3 {}
+
+
 img.follower {
-    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 80px;
 }
+
 
 /*フォロワー画面のユーザーの画像*/
 .followed {
@@ -767,4 +819,14 @@ img.follower {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+}
+
+.modal_content,
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+input[type="submit"].submit_btn {
+    background: url(../images/edit.png);
 }

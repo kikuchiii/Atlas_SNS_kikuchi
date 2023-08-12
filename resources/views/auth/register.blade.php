@@ -24,7 +24,7 @@
 
 <p class="back"><a href="/login">ログイン画面へ戻る</a></p>
 @if ($errors->any())
-    < class="alert alert-danger">
+    <p class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

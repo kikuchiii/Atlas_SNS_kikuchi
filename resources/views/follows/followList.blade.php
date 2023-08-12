@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="followuser">
+<div class="followuser2">
   <div class="title">
     <h2>Folow List</h2>
   </div>
@@ -21,8 +21,8 @@
   <li>
     @foreach ($posts as $post)
       <div class="post-list">
+        <img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
         <div class="content2">
-          <img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
           <h5 class="follow-user">{{ $post->user->username }}</h5>
           <p class ="post-created_at">
             {{ $post->created_at }}

@@ -24,8 +24,8 @@
                     <tr>
                         <div class="user-container">
                             <!--ユーザー画像-->
-                            <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
                             <div class="usertext">
+                            <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
                                 <div class="user-list">
                                     <!--ユーザーネーム-->
                                     <td class="user">{{ $list->username }}</td>

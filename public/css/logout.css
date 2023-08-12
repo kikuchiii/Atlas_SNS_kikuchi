@@ -83,7 +83,7 @@ header p {
 
 #clear .btn {
     color: #fff;
-    background-color: #d34258;
+    background-color: #ff3366;
     display: inline-block;
     padding: 10px 20px;
     text-align: right;
@@ -227,7 +227,7 @@ input[type="submit"] {
     color: #fff;
     font-size: 15px;
     letter-spacing: 0.11em;
-    background-color: #d34258;
+    background-color: #ff3366;
     display: inline-block;
     padding: 10px 15px;
     text-align: right;
@@ -244,11 +244,11 @@ input[type="submit"] {
 
 input[class="login"] {
     color: #fff;
-    background-color: #d34258;
+    background-color: #ff3366;
     display: inline-block;
     padding: 10px 40px;
     text-align: right;
     border-radius: 5px;
     border: 0px none;
-    margin-left: 99px;
+    margin-left: 100px;
 }

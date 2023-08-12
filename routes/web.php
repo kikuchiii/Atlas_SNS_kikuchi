@@ -1,6 +1,6 @@
 <?php
 
-/*
+/*ter
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Route::post('/post/update', 'PostsController@update');
 
 //プロフィール編集
 Route::get('/profile','UsersController@profile');
-Route::post('users/update', 'UsersController@update');
+Route::post('users/update', 'UsersController@update')->name('users.update');
 
 //相手のプロフィール
 Route::get('user/{id}/yourprofile','UsersController@yourprofile');

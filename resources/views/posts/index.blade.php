@@ -14,23 +14,24 @@
     </div>
   </div>
   <li>
-    @foreach ($list as $lists)
+    @foreach ($list as $list)
       <div class="post-containner">
         <div class="content">
-          <div class="content2">
-            <img class="followUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
-            <p class="username"><h5>{{ $list->user->username }}</h5></p>
+          <img class="RoginUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+          <div class="post-area">
+            <h5 class="follow-user">{{ $list->user->username }}</h5>
             <p class="post-created_at">{{ $list->created_at }}</p>
           </div>
           <p class="post">{{ $list->post }}</p>
         </div>
         <!-- 投稿の編集ボタン -->
         <div class="content3">
-          <a class="js-modal-open" href="" post="{{ $list->post }}" post_id="{{ $list->id }}"><img src="./images/edit.png" class="edit"></a>
+          <a class="js-modal-open" href="" post="{{ $list->post }}" post_id="{{ $list->id }}">
+            <img class="edit" src="./images/edit.png" >
+          </a>
           <!-- 投稿の削除ボタン -->
           <div class="trash">
             <a href ="/post/{{ $list->id }}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')" >
-            <img src="./images/trash-h.png">
             <img src="./images/trash-h.png">
             </a>
           </div>
@@ -56,9 +57,9 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     <form action="/post/update" method="post">
-      <textarea name="upPost" class="modal_post"></textarea>
+      <textarea name="upPost" class="modal_post" cols="40" rows="4"></textarea>
       <input type="text" name="id" class="modal_id" value="">
-      <input type="submit" value="更新">
+      <input type="submit" value="更新" class="submit_btn">
       {{ csrf_field() }}
     </form>
     <a class="js-modal-close" href="">閉じる</a>

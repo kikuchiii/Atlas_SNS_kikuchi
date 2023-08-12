@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Storage;
 
 use App\User;
 
@@ -26,49 +28,51 @@ class UsersController extends Controller
         return view('users.profile')->with('user', Auth::user());
     }
 
-protected function validator(array $user)
-{
-// 記述方法：Validator::make('値の配列', '検証ルールの配列');
-
-return Validator::make($user, [
-            'username' => 'required|string|min:2|max:12',
-            'mail' => 'required|string|min:5|max:40|email',
-            'password' => 'required|string|min:8|max:20|alpha_dash|confirmed',
-            'bio' => 'max:150',
-            'image' => 'image|mine:jpg,png,gif',
-]);
-}
-
     public function update(Request $request)
     {
         //dd($request);
-        //$data = $request->all();
-        //$user = Auth::user();
-        //画像の名前だけデータベースに入れるようにしている
-        //$image = $request->file('iconimage')->store('public/images');
+        //フォームから送られてきた値(request)を代入
+        $user = $request->input();
+        //$image = $user->file('image');
+        //dd($user);
+        //↓リクエストにファイルが存在しているかを調べることができます。
+        //dd($user);
+//　バリデーションルール
+// 記述方法：Validator::make('値の配列', '検証ルールの配列');
+$validator = Validator::make($user, [
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|min:5|max:40|email',
+            'password' => 'alpha_num|required|string|min:8|max:20|confirmed',
+            'password_confirmation' => 'alpha_num|required|string|min:8|max:20|same:password',
+            'bio' => 'max:150',
+            'image' => 'file|mimes:jpg,png,bmp,gif,svg',
+]);
 
-        $username= $request->input('username');
-        $mail = $request->input('mail');
-        $password = $request->input('password');
-        $bio = $request->input('bio');
-        //$image = $request->file('image');
-
-//画像更新
-//if($request->hasFile('image')){
-    //$path = \Storage::put('/public',$image);
-    //$path = explode('/',$path);
-//$file_name  = $request->file('image')->getClientOriginalName();
+if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            //dd($image);
 //画像のオリジナルネームを取得
-//$user->image = $request->file('image')->storeAs('public',$file_name);//画像を保存して、そのパスを$imageに保存
-//} else {
-    //空の場合の記述
-    //$path = null;
-//}
-// 保存
-  //$request =
-  $user = $request->all();
-  $validator = $this->validator($user);
-if($validator->fails()){
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            //dd($imageName);
+            $image->storeAs('public',$imageName);
+            $user->image = $imageName;
+            //dd($imageName);
+            //Storage::disk('public')->putFileAs('image', $image, $imageName);
+            // データベースに画像情報を保存
+            //$user->image = $imageName;
+            $user->save();
+        // 画像が正常に保存されたら、成功メッセージを表示するなどの適切な処理を行う
+            return back()->with('success', '画像がアップロードされました。');
+        }
+        // 画像のアップロードに失敗した場合はエラーメッセージを表示
+        else{
+            return back()->with('error', '画像のアップロードに失敗しました。');
+        }
+
+
+
+  //$validator = $this->validator($user);
+if ($validator->fails()) {
     //エラー時の処理
     return redirect('/profile')
     ->withErrors($validator)
@@ -78,15 +82,19 @@ if($validator->fails()){
      $list = DB::table('users')
      ->where('id', Auth::id())//条件を追記　ログインしてる人のID
      ->update([
-                'username' => $username,
-                'mail' => $mail,
-                'password' => bcrypt($request['password']),
-                'bio' => $bio,
-                //'image' => $path,
+                'username' => $user['username'],
+                'mail' => $user['mail'],
+                'password' => bcrypt($user['password']),
+                'bio' => $user['bio'],
+                'image' => $imageName,
                 ]);
-                //dd($user->username);
+                dd($image);
+                //dd($path);
                 return redirect('/top');
     }
+
+
+
 }
 
     public function search()//ログインユーザー以外のユーザーを表示する機能

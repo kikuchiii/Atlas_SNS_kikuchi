@@ -7,8 +7,6 @@
     <li>
       <div class="post-containner">
         <!--名前-->
-        @foreach($profile as $profiles)
-      print($profile);
         <!--変数値を表示する（$profilesは、$profile[x]からコピーしてきたデータが入っている)-->
         <div class="pf-area">
         <img class="profile2" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
@@ -31,11 +29,11 @@
         </form>
         @endif
       </div>
-</div>
-      @endforeach
+        </div>
       </div>
       </div>
       @foreach ($UserPosts as $UserPosts)
+        <h5 class="follow-user">{{ $profile->username }}</h5>
       <div class="post-list">
       <!--print($UserPosts);-->
       <!--変数値を表示する（$UserPostsは、$UserPosts[x]からコピーしてきたデータが入っている)-->

@@ -95,7 +95,7 @@ class RegisterController extends Controller
             // セッションへデータを保存する
             //バリデーションの処理
             $validator = $this->validator($data);
-            if($validator->fails()){
+            if ($validator->fails()) {
                 // バリデーションに引っかかった場合の処理(元の画面の戻る)
                 return redirect('/register')
                 ->withErrors($validator)//バリデーションかけられた状態
