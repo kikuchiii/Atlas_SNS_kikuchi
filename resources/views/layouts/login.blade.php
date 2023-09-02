@@ -31,11 +31,17 @@
                     <p class= "roginuser"> {{ Auth::user()->username }} さん</p>
                     <input id="check-a" type="checkbox" class="check">
                     <label class="label "for="check-a"></label>
-                    <p class="text">
-                        <a href="/top">HOME</a>
-                        <a href="/profile">プロフィール編集</a>
-                        <a href="/logout">ログアウト</a>
-                    </p>
+                    <div class="text">
+                            <p class="child-link">
+                                <a href="/top">HOME</a>
+                            </p>
+                            <p class="child-link">
+                                <a href="/profile" class="profile-edit">プロフィール編集</a>
+                            </p>
+                            <p class="child-link">
+                                <a href="/logout">ログアウト</a>
+                            </p>
+                    </div>
                     <img class="rogin" src="{{ asset('./images/icon1.png') }}" width="50" height="50"></p>
                 </div>
             </header>

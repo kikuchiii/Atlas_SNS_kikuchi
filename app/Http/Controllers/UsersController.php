@@ -32,70 +32,52 @@ class UsersController extends Controller
     {
         //dd($request);
         //フォームから送られてきた値(request)を代入
-        $user = $request->input();
-        //$image = $user->file('image');
-        //dd($user);
-        //↓リクエストにファイルが存在しているかを調べることができます。
-        //dd($user);
-//　バリデーションルール
-// 記述方法：Validator::make('値の配列', '検証ルールの配列');
-$validator = Validator::make($user, [
+//$user = $request->input();
+//dd($user);
+//$image = $request->file('images');
+$validator = Validator::make($request->all(), [
             'username' => 'required|string|min:2|max:12',
             'mail' => 'required|string|min:5|max:40|email',
             'password' => 'alpha_num|required|string|min:8|max:20|confirmed',
             'password_confirmation' => 'alpha_num|required|string|min:8|max:20|same:password',
             'bio' => 'max:150',
-            'image' => 'file|mimes:jpg,png,bmp,gif,svg',
+            'images' => 'image|mimes:jpg,png,bmp,gif,svg',
 ]);
 
-if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            //dd($image);
-//画像のオリジナルネームを取得
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            //dd($imageName);
-            $image->storeAs('public',$imageName);
-            $user->image = $imageName;
-            //dd($imageName);
-            //Storage::disk('public')->putFileAs('image', $image, $imageName);
-            // データベースに画像情報を保存
-            //$user->image = $imageName;
-            $user->save();
-        // 画像が正常に保存されたら、成功メッセージを表示するなどの適切な処理を行う
-            return back()->with('success', '画像がアップロードされました。');
-        }
-        // 画像のアップロードに失敗した場合はエラーメッセージを表示
-        else{
-            return back()->with('error', '画像のアップロードに失敗しました。');
-        }
-
-
-
-  //$validator = $this->validator($user);
+//　バリデーションが失敗した場合
 if ($validator->fails()) {
     //エラー時の処理
-    return redirect('/profile')
+    return redirect('/top')
     ->withErrors($validator)
     ->withInput();
+}
+ // バリデーションが成功した場合、ここで画像をアップロードする
+if ($request->hasFile('images')) {
+    $image = $request->file('images');
+//画像のオリジナルネームを取得
+    $imageName = time() . '_' . $image->getClientOriginalName();
+    $path = $image->storeAs('public', $imageName);
+        // 画像が正常に保存されたら、成功メッセージを表示するなどの適切な処理を行う
+            return back()->with('success', '画像がアップロードされました。');
 } else {
+    $path = null; // 画像がアップロードされなかった場合は null をセット
+}
+
  //成功時の処理
      $list = DB::table('users')
      ->where('id', Auth::id())//条件を追記　ログインしてる人のID
      ->update([
-                'username' => $user['username'],
-                'mail' => $user['mail'],
-                'password' => bcrypt($user['password']),
-                'bio' => $user['bio'],
-                'image' => $imageName,
-                ]);
-                dd($image);
+            'username' => $request->input('username'),
+            'mail' => $request->input('mail'),
+            'password' => bcrypt($request->input('password')),
+            'bio' => $request->input('bio'),
+            'images' => $path, // アップロードした画像のパスをセット
+        ]);
+                //dd($image);
                 //dd($path);
                 return redirect('/top');
     }
 
-
-
-}
 
     public function search()//ログインユーザー以外のユーザーを表示する機能
     {
@@ -103,11 +85,14 @@ if ($validator->fails()) {
      $user = Auth::user(); //12/23 追記
         return view('users.search',['list' => $list]);
     }
+    //Laravelでフォーム機能を使ってリクエストを送信しデータベースに値を格納する際、空文字("")が勝手にnull値に変換されエラーが発生
     public function searching(Request $request)
     {
-       $name = $request->input('newPost');
+       $name = $request->input('search');
+     //dd($name);
        $list = DB::table('users')
      ->where('username','like','%'. $name . '%')//usernameフィールドに検索テキストを含むレコードをすべて表示する（検索結果を表示）
+
      ->get();
 
      $search_result = '検索ワード : '. $name; //検索ワード表示

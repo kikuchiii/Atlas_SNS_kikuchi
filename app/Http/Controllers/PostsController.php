@@ -22,7 +22,8 @@ class PostsController extends Controller
         //$user = Auth::user();
         //$list = Book::find($id);
         //$list = Post::where('user_id' , Auth::id())->first();
-        $list = Post::where('user_id' , Auth::id())->get();
+        //$list = Post::where('user_id' , Auth::id())->get();
+        $list = Post::where('user_id' , Auth::id())->first();
         //dd($list);
      //$list = Post::with('user')->where('id', $user )->get();//idとログインしているユーザーが一致した投稿を取得
 

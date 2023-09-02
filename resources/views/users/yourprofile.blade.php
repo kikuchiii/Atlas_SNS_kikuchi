@@ -3,18 +3,21 @@
 @section('content')
 
 <ul>
-  <div class="content2">
     <li>
       <div class="post-containner">
         <!--名前-->
         <!--変数値を表示する（$profilesは、$profile[x]からコピーしてきたデータが入っている)-->
-        <div class="pf-area">
-        <img class="profile2" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
-        <p>name</p>
-        <h5 class="follow-user">{{ $profile->username }}</h5>
-      <div class="pf-area2">
-        <p>bio</p>
-        <p class="post">{{ $profile->bio }}</p>
+              <div class="post-list">
+
+                <img class="profile2" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+                        <div class="content2">
+
+                          <p>name</p>
+                          <h5 class="follow-user">{{ $profile->username }}</h5>
+                        </div>
+                          <p>bio</p>
+                  <p class="post">{{ $profile->bio }}</p>
+                </div>
 <!--切り替えボタン-->
       @if(Auth::user()->isFollowing($profile->id))<!---->
         <form action="{{ route('search.unfollow', $profile->id) }}" method="POST">
@@ -29,7 +32,6 @@
         </form>
         @endif
       </div>
-        </div>
       </div>
       </div>
       @foreach ($UserPosts as $UserPosts)

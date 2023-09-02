@@ -1,16 +1,16 @@
 @extends('layouts.login')
 
 @section('content')
-    {!! Form::open(['url' => 'users/searching']) !!}
-@csrf
+{!! Form::open(['url' => 'users/searching']) !!}
+    @csrf
     <div class="search-group">
-    {!! Form::input('text', 'search', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
-    @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
-     {{ $search_result }}
-     @endif
-
-    <button type="search"><img class="search-image" src="./images\search.png" width="50" height="50">
-</button>
+        {!! Form::input('text', 'search', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
+        <div style="color: #C0C0C0;"></div>
+        <button type="search"><img class="search-image" src="{{ asset('./images/search.png' ) }}" width="50" height="50">
+        </button>
+        @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
+            <h5 class="search_result">{{ $search_result }}</h5>
+        @endif
     {!! Form::close() !!}
 </div>
 
@@ -28,7 +28,7 @@
                             <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
                                 <div class="user-list">
                                     <!--ユーザーネーム-->
-                                    <td class="user">{{ $list->username }}</td>
+                                    <h5 class="user">{{ $list->username }}</h5>
                                 </div>
                             </div>
                             @if(Auth::user()->isFollowing($list->id))<!---->
@@ -55,5 +55,7 @@
         </div>
     @endforeach
 </div>
+
+
 <!--div-->
 @endsection

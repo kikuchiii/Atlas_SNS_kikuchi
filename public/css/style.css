@@ -56,7 +56,7 @@ img.example1 {
 
 /* クリック時に表示されるテキスト */
 .text {
-
+    transform: scaleY(0);
     background: #ffffff;
     align-items: center;
     margin-bottom: 10px;
@@ -76,53 +76,31 @@ img.example1 {
 
 }
 
-.text a:nth-child(odd) {
-    background-color: #fff;
-    color: #808080;
-    padding: 20px 25px;
-    border-bottom: solid 1px #000000;
-    height: 100px;
-    /*枠線・下*/
-    font-size: 25px;
-    text-decoration: none;
-    display: block;
-}
-
-
-.text a:nth-child(2) {
-    background-color: #000080;
+.text>p:nth-child(1) {
+    padding: 25px 130px;
     color: #fff;
-    padding: 20px 25px;
-    border-bottom: solid 1px #000000;
-    display: block;
-    text-decoration: none;
+}
 
+.text>p:nth-child(2) {
+    padding: 25px 65px;
+    background-color: navy;
 }
 
 
-
-
-.text a:nth-child(1) {
-    color: #808080;
-    padding: 20px 0;
-    font-size: 25px;
-    text-decoration: none;
-    display: block;
-
-    line-height: 35px;
-    padding-left: 5px;
-    font-weight: normal;
+.text>p:nth-child(3) {
+    padding: 25px 0px;
+    color: #fff;
 }
-
 
 /* クリック時のスタイル */
 .check:checked+.label+.text {
+    transform: scaleY(1);
     position: absolute;
     top: 100px;
     right: 0;
-    height: 295px;
-    padding: 30px;
+    height: 265px;
     width: 305px;
+
 }
 
 /* クリック時のスタイル */
@@ -130,9 +108,39 @@ img.example1 {
     transform: translateY(25%) rotate(-45deg);
 }
 
+/**/
+.text>p {
+    text-align: center;
+    border: 1px solid #000;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin: 0;
+}
+
+.child-link>a {
+    color: gray;
+    font-size: 25px;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.child-link .profile-edit {
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+
+.check .child-link {
+    margin: 0;
+    padding: 0;
+}
+
 .roginuser {
     position: absolute;
-    top: 47px;
+    top: 40px;
     right: 160px;
     font-size: 20px;
     font-family: inherit;
@@ -152,6 +160,7 @@ img.example1 {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    height: 2000px;
 }
 
 #confirm {
@@ -168,6 +177,13 @@ img.btn btn-danger {
     border-bottom: 2px solid #d3d3d3;
 }
 
+.post-containner2 {
+    border-bottom: 2px solid #d3d3d3;
+    margin-top: 25px;
+}
+
+
+
 .user-post {
     display: flex;
 }
@@ -177,20 +193,21 @@ img.btn btn-danger {
     display: flex;
     justify-content: space-between;
     padding: 0.5em 0 0.5em 1.4em;
-    margin-left: 120px;
+    margin-left: 165px;
     margin-top: -65px;
 }
 
 img.RoginUser {
     text-align: center;
-    margin-left: 80px;
+    margin-left: 125px;
     margin-top: -5px;
 }
 
 
 
 .post-list {
-    border-top: 2px solid #d3d3d3;
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
 }
 
 .content3 {
@@ -258,7 +275,7 @@ img.btn {
 
 
 .search-group {
-    border-bottom: 5px solid #dcdcdc;
+    border-bottom: 7px solid #dcdcdc;
     display: flex;
 }
 
@@ -270,11 +287,19 @@ img.btn {
     margin: 0 auto;
 }
 
+.search_result {
+    margin-top: 60px;
+    margin-left: 230px;
+    letter-spacing: 2px;
+    font-family: 'arial';
+}
+
 .username-area {}
 
 .usertext {
-    margin-left: 80px;
-    max-width: 400px;
+    margin-left: 10px;
+    width: 300px;
+    margin-top: 10px;
 }
 
 .user-list {
@@ -289,30 +314,32 @@ img.btn {
     flex-direction: row;
     justify-content: center;
     margin-top: 25px;
+    margin-bottom: -20px;
 }
 
 
 
 button[type="submit"] {
     /* 文字に合わせる*/
-
+    position: relative;
+    top: 20px;
+    left: 920px;
+    height: 50px;
+    width: 45px;
     color: rebeccapurple;
     border-radius: 5px;
     border: none;
-    width: 5%;
-    height: 50px;
-    position: relative;
     top: 20px;
     left: 920px;
 }
 
 /* 送信ボタン画像*/
 button[type="submit"] .send {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     border-radius: 5px;
-    top: 20px;
-    left: 920px;
-    width: 100%;
 }
 
 
@@ -322,15 +349,18 @@ input[name="search"] {
     margin-bottom: 45px;
     display: block;
     max-width: 300px;
-    height: 40px;
+    height: 45px;
     padding: 0 30px;
     background: #fff;
     border-radius: 5px;
     border-color: grey;
     border-width: revert;
+    font-size: 25px;
 }
 
-
+.search-group input[name="search"]::placeholder {
+    color: #C0C0C0;
+}
 
 img.mark {
     width: 50px;
@@ -365,6 +395,8 @@ button[type="follow"] {
     padding: 5px 30px;
     border: none;
     margin: 0px 22px 50px 61px;
+    margin-top: 10px;
+    letter-spacing: 2px;
 }
 
 button[type="unfollow"] {
@@ -375,6 +407,7 @@ button[type="unfollow"] {
     padding: 5px 30px;
     border: none;
     margin: 0px 22px 50px 61px;
+    letter-spacing: 2px;
 }
 
 /*
@@ -438,18 +471,33 @@ button[type="submit"] {
     height: 20px;
 }
 */
+.follow-area input {
+    width: 30px;
+}
+
+
 button[type="search"] {
-    width: 50px;
+    width: 60px;
     height: 50px;
-    margin: 50px 0 0 20px;
+    /* position: relative; */
+    top: 48px;
+    left: 20px;
+    margin-left: 20px;
+    margin-top: 48px;
+    border: none;
     border-radius: 5px;
+    background: none;
 }
 
 
 button[type="search"] img {
-    width: 100px;
-    height: 100px;
     object-fit: cover;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 
 /*followList（フォローリスト画面）*/
@@ -488,8 +536,9 @@ button[type="search"] img {
 }
 
 .post {
-    margin-left: 143px;
+    margin-left: 185px;
     margin-top: -10px;
+    width: 700px;
 }
 
 /*.post-created_at {*/
@@ -520,6 +569,30 @@ img.followUser {
     margin-left: 80px;
     margin-top: 20px;
 }
+
+/*Top画面　のフォローユーザー*/
+img.Top-followUser {
+    text-align: center;
+    margin-left: 125px;
+    margin-top: 20px;
+}
+
+/*Top画面　フォローユーザー名とその投稿の更新日*/
+.Top-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0 0.5em 1.4em;
+    margin-left: 165px;
+    margin-top: -60px;
+}
+
+/*Top 投稿*/
+.Top-post {
+    margin-left: 192px;
+    margin-top: -10px;
+    width: 700px;
+}
+
 
 /*上のユーザーネーム*/
 .follow img {
@@ -628,6 +701,7 @@ input[name="newPost"] {
     /*--幅--*/
     padding: 10px;
     /*--余白--*/
+    margin-left: -200px;
     font-size: 16px;
     /*--文字サイズ--*/
     border: solid 2px #cccccc;
@@ -639,7 +713,11 @@ input[name="newPost"] {
     display: inline-block;
 }
 
-
+input[class='form-control']::placeholder {
+    color: #EEEEEE;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+}
 
 .form-list {
     margin: 0 auto;
@@ -677,9 +755,9 @@ ul li {
 }
 
 img.profile2 {
-    position: absolute;
-    top: 160px;
-    left: 130px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 80px;
 }
 
 .pf-area {
@@ -719,11 +797,20 @@ img.profile2 {
 button[type="button"] a {
     color: #fff;
     font-size: 15px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+button[type="button"]a:nth-child(2) {
+    margin-inline: 10px;
+}
+
+
+
 button[type="button"] {
-    margin-left: 130px;
+    background-color: #0033CC;
+    margin-left: 115px;
     margin-top: 15px;
     padding: 5px 20px;
     margin-bottom: 15px;
@@ -824,9 +911,11 @@ img.follower {
 .modal_content,
 textarea {
     width: 100%;
-    height: 100px;
+    height: 190px;
 }
 
-input[type="submit"].submit_btn {
-    background: url(../images/edit.png);
+/*投稿編集モーダル　アイコン*/
+input[class="submit_btn"] {
+    margin-left: 400px;
+    margin-top: -45px
 }

@@ -31,7 +31,7 @@
         <div style="background: #fff; border-left: #fff solid 10px; border: #fceff2 solid 1px; font-size: 25px; color: #C0C0C0; padding: 5px; margin-inline: 20px;
     margin-block: -5px;">
         ファイルを選択</div>
-      <input type="file" name="image">
+      <input type="file" name="images">
       </div>
       <form method='POST' action="{{ route('users.update') }}" enctype="multipart/form-data" style="display:none"><!--ファイルを扱うときに記載する-->
       @csrf
