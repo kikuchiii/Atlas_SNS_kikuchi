@@ -42,7 +42,7 @@
                                 <a href="/logout">ログアウト</a>
                             </p>
                     </div>
-                    <img class="rogin" src="{{ asset('./images/icon1.png') }}" width="50" height="50"></p>
+                    <img class="rogin" src="{{ asset('./images/icon3.png ') }}" width="50" height="50"></p>
                 </div>
             </header>
             <div id="row">

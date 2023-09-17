@@ -16,12 +16,12 @@
   <li>
       <div class="post-containner">
         <div class="content">
-          <img class="RoginUser" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+          <img class="RoginUser" src="{{ asset('storage/app/public' .$list->images) }}" width="50" height="50">
           <div class="post-area">
             <h5 class="follow-user">{{ $list->user->username }}</h5>
             <p class="post-created_at">{{ $list->created_at }}</p>
           </div>
-          <p class="post">{{ $list->post }}</p>
+          <p class="top-post">{{ $list->post }}</p>
         </div>
         <!-- 投稿の編集ボタン -->
         <div class="content3">
@@ -80,7 +80,7 @@
             <h5 class="follow-user">{{ $list->user->username }}</h5>
             <p class="post-created_at">{{ $list->created_at }}</p>
           </div>
-          <p class="post">{{ $list->post }}</p>
+          <p class="post-content">{{ $list->post }}</p>
         </div>
         <!-- 投稿の編集ボタン -->
         <div class="content3">

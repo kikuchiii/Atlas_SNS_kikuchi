@@ -43,11 +43,10 @@ $validator = Validator::make($request->all(), [
             'bio' => 'max:150',
             'images' => 'image|mimes:jpg,png,bmp,gif,svg',
 ]);
-
 //　バリデーションが失敗した場合
 if ($validator->fails()) {
     //エラー時の処理
-    return redirect('/top')
+    return redirect('/profile')
     ->withErrors($validator)
     ->withInput();
 }
@@ -58,9 +57,12 @@ if ($request->hasFile('images')) {
     $imageName = time() . '_' . $image->getClientOriginalName();
     $path = $image->storeAs('public', $imageName);
         // 画像が正常に保存されたら、成功メッセージを表示するなどの適切な処理を行う
-            return back()->with('success', '画像がアップロードされました。');
+
+            //return back()->with('success', '画像がアップロードされました。');
 } else {
     $path = null; // 画像がアップロードされなかった場合は null をセット
+            //return back()->with('error', '画像のアップロードに失敗しました。');
+
 }
 
  //成功時の処理
@@ -71,7 +73,7 @@ if ($request->hasFile('images')) {
             'mail' => $request->input('mail'),
             'password' => bcrypt($request->input('password')),
             'bio' => $request->input('bio'),
-            'images' => $path, // アップロードした画像のパスをセット
+            'images' => $imageName, // アップロードした画像のパスをセット 画像の名前を入れる
         ]);
                 //dd($image);
                 //dd($path);

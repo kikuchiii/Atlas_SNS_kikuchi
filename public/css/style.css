@@ -188,6 +188,15 @@ img.btn btn-danger {
     display: flex;
 }
 
+/*TOP*/
+.post-content {
+    margin-left: 188px;
+    margin-top: -10px;
+    width: 700px;
+}
+
+
+
 /*ログインユーザーの名前、その投稿更新日*/
 .post-area {
     display: flex;
@@ -195,6 +204,12 @@ img.btn btn-danger {
     padding: 0.5em 0 0.5em 1.4em;
     margin-left: 165px;
     margin-top: -65px;
+}
+
+.top-post {
+    margin-left: 187px;
+    margin-top: -10px;
+    width: 700px;
 }
 
 img.RoginUser {
@@ -329,8 +344,6 @@ button[type="submit"] {
     color: rebeccapurple;
     border-radius: 5px;
     border: none;
-    top: 20px;
-    left: 920px;
 }
 
 /* 送信ボタン画像*/
@@ -404,7 +417,7 @@ button[type="unfollow"] {
     background-color: #EE0000;
     color: #fff;
     border-radius: 8px;
-    padding: 5px 30px;
+    padding: 5px 25px;
     border: none;
     margin: 0px 22px 50px 61px;
     letter-spacing: 2px;
@@ -536,7 +549,7 @@ button[type="search"] img {
 }
 
 .post {
-    margin-left: 185px;
+    margin-left: 143px;
     margin-top: -10px;
     width: 700px;
 }
@@ -754,36 +767,20 @@ ul li {
     /*枠線・下*/
 }
 
-img.profile2 {
+img.yp {
     text-align: center;
     margin-top: 20px;
     margin-left: 80px;
 }
 
-.pf-area {
-    border-bottom: 2px solid #d3d3d3;
-    display: flex;
-    margin-top: 40px;
-    margin-left: 150px;
-    padding: 0.5em 0 0.5em 1.4em;
-}
 
-.pf-area2 p {
-    margin-left: 170px;
-}
-
-.pf-area2 {
-    margin-top: 10px;
-    max-width: 100%;
-}
-
-.post-containner button[type="unfollow"] {
+.pfcontainner button[type="unfollow"] {
     background-color: #EE0000;
     color: #fff;
     border-radius: 8px;
     padding: 10px 30px;
     border: none;
-    margin-left: 650px;
+    margin-left: 845px;
     margin-bottom: 20px;
 }
 
@@ -802,7 +799,7 @@ button[type="button"] a {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-button[type="button"]a:nth-child(2) {
+button[type="button"] a:nth-child(2) {
     margin-inline: 10px;
 }
 
@@ -878,7 +875,6 @@ img.follower {
 /*モーダル*/
 .modal js-modal {}
 
-/* 必要に応じて編集しご自身でSNS課題のレイアウトのようにカスタマイズしてください。 */
 .content {
     margin: 0 auto;
 }
@@ -918,4 +914,56 @@ textarea {
 input[class="submit_btn"] {
     margin-left: 400px;
     margin-top: -45px
+}
+
+
+/*他のユーザーのプロフィール画面*/
+.your-profile {
+    display: flex;
+    padding: 0.5em 0 0.5em 1.4em;
+    margin-left: 120px;
+    margin-top: -35px;
+}
+
+/*他のユーザーのプロフィール画面のユーザー名*/
+.your-name {
+    margin-left: 150px;
+}
+
+.your-name2 {
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+.profile-bio {
+    margin-top: 50px;
+}
+
+.yourprofile-post {
+    margin-left: 17px;
+    margin-top: 50px;
+    width: 700px;
+}
+
+.yourprofile-primary {
+    display: flex;
+    padding: 0.5em 0 0.5em 1.4em;
+    margin-left: 120px;
+    margin-top: -65px;
+}
+
+.yourprofile-secondary {
+    border-top: 8px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.yourprofile-secondary p {
+    margin-left: 160px;
+}
+
+.pf-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 160px;
+    margin-top: 35px;
 }
