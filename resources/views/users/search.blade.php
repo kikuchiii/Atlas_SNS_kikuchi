@@ -8,12 +8,11 @@
         <div style="color: #C0C0C0;"></div>
         <button type="search"><img class="search-image" src="{{ asset('./images/search.png' ) }}" width="50" height="50">
         </button>
-        @isset($search_result)<!--「もし検索ワードがあれば検索結果を表示する」というif文-->
+        @isset($search_result)
             <h5 class="search_result">{{ $search_result }}</h5>
         @endif
     {!! Form::close() !!}
 </div>
-
 <!--div 1人分のエリア-->
 <div class="user_content">
     @foreach ($list as $list)
@@ -55,7 +54,4 @@
         </div>
     @endforeach
 </div>
-
-
-<!--div-->
 @endsection

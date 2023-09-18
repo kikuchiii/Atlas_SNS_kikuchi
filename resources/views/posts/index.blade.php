@@ -16,7 +16,7 @@
   <li>
       <div class="post-containner">
         <div class="content">
-          <img class="RoginUser" src="{{ asset('storage/app/public' .$list->images) }}" width="50" height="50">
+          <img class="RoginUser" src="{{ asset('/storage/' . $list->images) }}" width="50" height="50">
           <div class="post-area">
             <h5 class="follow-user">{{ $list->user->username }}</h5>
             <p class="post-created_at">{{ $list->created_at }}</p>

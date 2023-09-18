@@ -35,8 +35,6 @@
       @foreach ($UserPosts as $UserPosts)
         <div class="pf-detail">
           <h5 class="follow-user">{{ $profile->username }}</h5>
-          <!--print($UserPosts);-->
-          <!--変数値を表示する（$UserPostsは、$UserPosts[x]からコピーしてきたデータが入っている)-->
           <p class ="post-created_at">
             {{ $UserPosts->created_at }}
           </p>

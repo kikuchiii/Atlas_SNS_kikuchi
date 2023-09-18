@@ -175,6 +175,28 @@ h2 {
 
 }
 
+input[name="password"] {
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: block;
+    max-width: 500px;
+    height: 30px;
+    padding: 0 35px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+input[name="password_confirmation"] {
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: block;
+    max-width: 500px;
+    height: 30px;
+    padding: 0 35px;
+    background: #fff;
+    border-radius: 8px;
+}
+
 .ct-block {
     margin-bottom: 20px;
     text-align: center;

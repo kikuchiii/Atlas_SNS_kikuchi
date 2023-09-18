@@ -3,10 +3,10 @@
 @section('content')
     <img src="{{ asset('$user->$image')}}"
  alt="Uploaded Image" width="50" height="50">
-{!! Form::open(['url' => 'users/update','class' => 'profile','files' => true]) !!} <!--post/createにフォームの値を送る-->
+{!! Form::open(['url' => 'users/update','class' => 'profile','files' => true]) !!}
 <div class="form-list">
     <div class="ct-block">
-      {{ Form::label('user name') }} <!--フォームの中でフォームの項目名と構成部品（チェックボックス、ラジオボタンなど）を関連付けるためのタグ-->
+      {{ Form::label('user name') }}
       <input type="text" name="username" value="{{Auth::user()->username}}" >
     </div>
     <div class="ct-block">
@@ -33,13 +33,12 @@
         ファイルを選択</div>
       <input type="file" name="images">
       </div>
-      <form method='POST' action="{{ route('users.update') }}" enctype="multipart/form-data" style="display:none"><!--ファイルを扱うときに記載する-->
+      <form method='POST' action="{{ route('users.update') }}" enctype="multipart/form-data" style="display:none">
       @csrf
 <!---->
 @if (session('success'))
     <div>{{ session('success') }}</div>
 @endif
-
     @if (isset($imageName))
     <img src="{{ asset('storage/images/' . $imageName) }}" alt="Uploaded Image">
 @endif
@@ -48,7 +47,6 @@
       {{ Form::submit('更新', ['type'=>'submit']) }}
 
 </div>
-
 {!! Form::close() !!}
 
 @if ($errors->any())

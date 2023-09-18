@@ -7,7 +7,6 @@
         </div>
 
         <div class="follow">
-            <!--{!! Form::open(['url' => 'follows/followerList']) !!}-->
             @foreach ($followed as $followed)
                 @if ( Auth::user()->isFollowed($followed->id))
                 <tr>

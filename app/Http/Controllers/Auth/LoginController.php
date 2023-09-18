@@ -44,12 +44,9 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
             // ログインが成功したら、トップページへ
-            //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                //$request->session()->put('login',$data['username']);
                 return redirect('/top');
             }
-            //ここにセッションの処理を記入予定
         }
         return view("auth.login");
     }

@@ -7,7 +7,6 @@
   </div>
   <div class="follow">
       @foreach ($follow as $follow)
-        <!--@if ($follow->id !== Auth::user()->id)-->
         @if ( Auth::user()->isFollowing($follow->id))
           <!--フォローユーザーネーム-->
           <p class="follow_content"><a href="/user/{{$follow->id}}/yourprofile"><img src="{{ asset('./images/icon3.png ') }}" width="50" height="50"></a></p>
@@ -34,5 +33,3 @@
   </li>
 </ul>
 @endsection
-
-<!--5行目の先頭　$list->id !==-->
