@@ -100,6 +100,10 @@ return [
     */
 
     'custom' => [
+        'newPost' =>'投稿欄は入力必須です',
+    'numeric' => '整数で入力してください',
+    'between' => '0～150で入力してください'
+  ,
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -116,6 +120,6 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => ['newPost' => '投稿欄'],
 
 ];

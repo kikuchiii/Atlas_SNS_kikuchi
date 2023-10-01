@@ -21,11 +21,11 @@
         <li>
         @foreach ($followedposts as $followedpost)
             <div class="post-list">
-                <img class="follower" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+                <p class="follower"><a href="/user/{{ $followed->id }}/yourprofile"><img src="{{ asset('./images/icon3.png ') }}" width="50" height="50"></a></p>
                 <div class="content2">
-                    <h5 class="follow-user">{{ $followedpost->user->username }}</h5>
+                    <h5 class="follower-user">{{ $followedpost->user->username }}</h5>
                     <p class ="follower-post-created_at">
-                        {{ $followedpost->created_at }}
+                        {{ $followedpost->updated_at->format('Y-m-d G:i') }}
                     </p>
                 </div>
                 <p class="follower-post">{{ $followedpost->post }}</p>

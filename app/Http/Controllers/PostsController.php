@@ -19,11 +19,14 @@ class PostsController extends Controller
     //
     public function index()//表示用
     {
-        $list = Post::where('user_id' , Auth::id())->first();
         $following_id = Auth::user()->follows()->pluck('followed_id');
-        $follow = User::whereIn('id', $following_id)->get();
-        $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
-return view('posts.index',['list' => $list,'follow' => $follow,'posts' => $posts]);//ビューファイルを表示
+        $list = Post::where('user_id' , Auth::id())
+        ->orWhere('posts.user_id', $following_id)
+        ->orderBy('updated_at','desc')->get();
+        //フォローユーザーの画像↓
+        $follow = User::where('id', $following_id)->get();
+        //$posts = Post::with('user')->whereIn('posts.user_id', $following_id)->get();
+return view('posts.index',['list' => $list,'follow' => $follow]);//ビューファイルを表示
     }
 
     protected function validator(array $post)//新規投稿処理
@@ -69,6 +72,7 @@ return view('posts.index',['list' => $list,'follow' => $follow,'posts' => $posts
     public function update(Request $request){
         $id = $request->input('id');
         $up_post = $request->input('upPost');
+        //dd($up_post);
         Post::where('id', $id)->update(['post' => $up_post]);
 
         return redirect('/top');

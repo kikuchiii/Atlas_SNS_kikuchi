@@ -21,6 +21,7 @@ class FollowsController extends Controller
                 $following_id = Auth::user()->follows()->pluck('followed_id');
                 $follow = User::whereIn('id', $following_id)
                 ->get();
+                //dd($follow);
                 $posts = Post::with('user')->whereIn('posts.user_id', $following_id)->orderBy('created_at','desc')->get();
         return view('follows.followList', ['follow' => $follow,'posts' => $posts]);
     }

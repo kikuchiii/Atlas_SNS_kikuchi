@@ -10,7 +10,7 @@
     <img class="yp" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
     <div class="your-profile">
       <p>name</p>
-    <div class="your-name"><h5 class="follow-user">{{ $profile->username }}</h5></div>
+    <div class="your-name"><h5 class="yp-username">{{ $profile->username }}</h5></div>
     </div>
     <div class="yourprofile-primary">
     <div class="profile-bio"><p>bio</p></div>
@@ -34,9 +34,9 @@
     <div class="yourprofile-secondary">
       @foreach ($UserPosts as $UserPosts)
         <div class="pf-detail">
-          <h5 class="follow-user">{{ $profile->username }}</h5>
+          <h5 class="yp-username">{{ $profile->username }}</h5>
           <p class ="post-created_at">
-            {{ $UserPosts->created_at }}
+            {{ $UserPosts->updated_at->format('Y-m-d G:i') }}
           </p>
         </div>
         <p>{{ $UserPosts->post }}</p>

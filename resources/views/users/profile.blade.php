@@ -1,10 +1,10 @@
 @extends('layouts.login')
 
 @section('content')
-    <img src="{{ asset('$user->$image')}}"
- alt="Uploaded Image" width="50" height="50">
 {!! Form::open(['url' => 'users/update','class' => 'profile','files' => true]) !!}
 <div class="form-list">
+  <img src="{{ asset('storage/' . Auth::user()->images) }}"
+  alt="Uploaded Image" width="50" height="50" class="pf-roginuser">
     <div class="ct-block">
       {{ Form::label('user name') }}
       <input type="text" name="username" value="{{Auth::user()->username}}" >

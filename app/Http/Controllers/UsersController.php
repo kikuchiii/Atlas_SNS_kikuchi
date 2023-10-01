@@ -30,7 +30,7 @@ class UsersController extends Controller
 
     public function update(Request $request)
     {
-$validator = Validator::make($request->all(), [
+    $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:2|max:12',
             'mail' => 'required|string|min:5|max:40|email',
             'password' => 'alpha_num|required|string|min:8|max:20|confirmed',
@@ -50,8 +50,9 @@ if ($request->hasFile('images')) {
 } else {
     $path = null;
 }
-     $list = DB::table('users')
-     ->where('id', Auth::id())
+//↓いらない
+     //$list = DB::table('users')
+     User::where('id', Auth::id())
      ->update([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),

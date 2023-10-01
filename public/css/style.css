@@ -83,12 +83,11 @@ img.example1 {
 
 .text>p:nth-child(2) {
     padding: 25px 65px;
-    background-color: navy;
 }
 
 
 .text>p:nth-child(3) {
-    padding: 25px 0px;
+    padding: 25px 99px;
     color: #fff;
 }
 
@@ -108,7 +107,7 @@ img.example1 {
     transform: translateY(25%) rotate(-45deg);
 }
 
-/**/
+/* ドロップダウンメニュー */
 .text>p {
     text-align: center;
     border: 1px solid #000;
@@ -118,6 +117,7 @@ img.example1 {
     margin: 0;
 }
 
+/* ドロップダウンメニュー(文字) */
 .child-link>a {
     color: gray;
     font-size: 25px;
@@ -125,8 +125,17 @@ img.example1 {
     letter-spacing: 2px;
 }
 
+/* ドロップダウンメニュー(マウスオーバー時) */
+.child-link:hover {
+    background-color: navy;
+}
+
+/* ドロップダウンメニュー(マウスオーバー時の文字色) */
+.child-link:hover>a {
+    color: #fafafa;
+}
+
 .child-link .profile-edit {
-    color: #fff;
     font-size: 25px;
     text-decoration: none;
     letter-spacing: 2px;
@@ -143,7 +152,7 @@ img.example1 {
     top: 40px;
     right: 160px;
     font-size: 20px;
-    font-family: inherit;
+    font-family: "ＭＳ Ｐゴシック";
 }
 
 /* main content */
@@ -175,6 +184,7 @@ img.btn btn-danger {
 
 .post-containner {
     border-bottom: 2px solid #d3d3d3;
+    margin-top: 10px;
 }
 
 .post-containner2 {
@@ -188,14 +198,17 @@ img.btn btn-danger {
     display: flex;
 }
 
-/*TOP*/
+/* TOP */
 .post-content {
     margin-left: 188px;
     margin-top: -10px;
     width: 700px;
 }
 
-
+/* ログインユーザーの名前 */
+.rogin-username {
+    margin-top: 5px;
+}
 
 /*ログインユーザーの名前、その投稿更新日*/
 .post-area {
@@ -206,6 +219,22 @@ img.btn btn-danger {
     margin-top: -65px;
 }
 
+/* 投稿日 */
+.post-updated_at {
+    display: flex;
+    margin-right: 40px;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.post-created_at {
+    display: flex;
+    margin-right: 40px;
+    justify-content: flex-end;
+    margin-top: -15px;
+}
+
+
 .top-post {
     margin-left: 187px;
     margin-top: -10px;
@@ -215,7 +244,7 @@ img.btn btn-danger {
 img.RoginUser {
     text-align: center;
     margin-left: 125px;
-    margin-top: -5px;
+    margin-top: 18px;
 }
 
 
@@ -229,43 +258,50 @@ img.RoginUser {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
 }
-
-.login-container label {}
-
-
-.post {}
 
 .username {
     margin-left: 15px;
 }
 
-
-/*編集ボタン（画像）*/
+/* 編集ボタン(画像) */
 img.edit {
     width: 40px;
 }
 
-/*(親要素)　削除ボタン（画像）*/
+/* (親要素)　削除ボタン（画像) */
 .trash {
-    width: 60px;
-    margin-right: 20px;
     cursor: pointer;
+    height: 50px;
+    position: relative;
+    width: 55px;
+    overflow: hidden;
 }
 
 /*（子要素）　削除ボタン反転画像*/
 .trash img {
-    width: 50px;
-    transition: .4s;
+    height: auto;
+    position: absolute;
+    width: 100%;
 }
 
-/* hoverすると2枚目の画像が色相回転 */
+.trash:hover img:nth-of-type(1) {
+    opacity: 0;
+}
+
+
+/* 2番目の画像は最初透明 */
+.trash img:last-of-type {
+    opacity: 0;
+    transition: opacity .2s;
+    transform: scale(0.5);
+}
+
+/* hoverすると2枚目の画像が透明じゃなくなる */
 .trash:hover img {
-    transition: opacity .7s;
-    filter: invert(100%);
+    opacity: 1;
 }
-
-
 
 a {
     color: #fff;
@@ -278,24 +314,20 @@ img.btn {
     height: 60px;
 }
 
-/*投稿一覧　リスト*/
+/* 投稿一覧　リスト */
 .li {
     border-top: dotted 2px #cecccd;
     list-style: none;
 }
 
 
-/* search.blade.php(ユーザー検索画面)*/
-
-
-
+/* search.blade.php(ユーザー検索画面) */
 .search-group {
     border-bottom: 7px solid #dcdcdc;
     display: flex;
 }
 
-/*横幅を調整して中央に配置*/
-/*usernameのエリアの全体レイアウト*/
+/* usernameのエリアの全体レイアウト */
 
 /*usernameのエリア*/
 .user_content {
@@ -306,7 +338,7 @@ img.btn {
     margin-top: 60px;
     margin-left: 230px;
     letter-spacing: 2px;
-    font-family: 'arial';
+    font-family: "ＭＳ Ｐゴシック";
 }
 
 .username-area {}
@@ -335,7 +367,7 @@ img.btn {
 
 
 button[type="submit"] {
-    /* 文字に合わせる*/
+    /* 文字に合わせる */
     position: relative;
     top: 20px;
     left: 920px;
@@ -346,7 +378,7 @@ button[type="submit"] {
     border: none;
 }
 
-/* 送信ボタン画像*/
+/* 送信ボタン画像 */
 button[type="submit"] .send {
     position: absolute;
     top: 0;
@@ -380,6 +412,7 @@ img.mark {
     height: 50px;
     display: inline-block;
     margin-right: 200px;
+    margin-top: -25px;
     background-color: #fff;
 }
 
@@ -405,11 +438,13 @@ button[type="follow"] {
     background-color: #0099CC;
     color: #fff;
     border-radius: 5px;
-    padding: 5px 30px;
+    padding: 5px 25px;
     border: none;
     margin: 0px 22px 50px 61px;
     margin-top: 10px;
     letter-spacing: 2px;
+    font-family: "ＭＳ Ｐゴシック";
+    font-weight: bold;
 }
 
 button[type="unfollow"] {
@@ -421,6 +456,7 @@ button[type="unfollow"] {
     border: none;
     margin: 0px 22px 50px 61px;
     letter-spacing: 2px;
+    font-family: cursive;
 }
 
 /*
@@ -435,7 +471,7 @@ button[type="unfollow"] {
 
 }*/
 
-/*top*/
+/* top */
 .Form {
     width: 400px;
     /*--幅--*/
@@ -453,6 +489,7 @@ button[type="unfollow"] {
 .form-area {
     border-bottom: 7px solid #dcdcdc;
     padding-bottom: 40px;
+    margin-bottom: -27px;
 }
 
 
@@ -492,7 +529,6 @@ button[type="submit"] {
 button[type="search"] {
     width: 60px;
     height: 50px;
-    /* position: relative; */
     top: 48px;
     left: 20px;
     margin-left: 20px;
@@ -505,7 +541,6 @@ button[type="search"] {
 
 button[type="search"] img {
     object-fit: cover;
-    /* position: absolute; */
     top: 0;
     left: 0;
     width: 100%;
@@ -513,12 +548,12 @@ button[type="search"] img {
     border-radius: 5px;
 }
 
-/*followList（フォローリスト画面）*/
+/* followList(フォローユーザーのページ) */
 .title {
     flex-basis: 300px;
 }
 
-/*フォローユーザー名とその投稿の更新日*/
+/* フォローユーザー名とその投稿の更新日 */
 .content2 {
     display: flex;
     justify-content: space-between;
@@ -528,7 +563,7 @@ button[type="search"] img {
 }
 
 
-/*フォローされているユーザーネーム*/
+/* フォローされているユーザーネーム */
 .follow {
     width: 600px;
     height: auto;
@@ -551,6 +586,7 @@ button[type="search"] img {
 .post {
     margin-left: 143px;
     margin-top: -10px;
+    margin-bottom: 30px;
     width: 700px;
 }
 
@@ -576,12 +612,17 @@ button[type="search"] img {
 }
 
 
-
-img.followUser {
+/*フォローユーザーのアイコン*/
+.followUser img {
     text-align: center;
     margin-left: 80px;
     margin-top: 20px;
 }
+
+.follow-user {
+    margin-top: -15px;
+}
+
 
 /*Top画面　のフォローユーザー*/
 img.Top-followUser {
@@ -622,6 +663,7 @@ img.Top-followUser {
     display: flex;
     margin-right: 40px;
     justify-content: flex-end;
+    margin-top: -15px;
 }
 
 /* myprofile*/
@@ -631,6 +673,13 @@ img.Top-followUser {
     height: 30px;
     padding: 0 30px;
     border-radius: 5px;
+}
+
+.pf-roginuser {
+    position: absolute;
+    top: 125px;
+    left: 270px;
+    margin-top: 10px;
 }
 
 .rogin-image {
@@ -726,6 +775,32 @@ input[name="newPost"] {
     display: inline-block;
 }
 
+textarea[name="newPost"] {
+    width: 400px;
+    /*--幅--*/
+    padding: 10px;
+    /*--余白--*/
+    margin-left: -200px;
+    font-size: 16px;
+    /*--文字サイズ--*/
+    border: solid 2px #cccccc;
+    /*--ボーダー線--*/
+    border-radius: 5px;
+    /*--角丸--*/
+    height: 10px;
+    border: none;
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+textarea[class='form-control']::placeholder {
+    color: #EEEEEE;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+}
+
+
+
 input[class='form-control']::placeholder {
     color: #EEEEEE;
     letter-spacing: 1.5px;
@@ -770,24 +845,35 @@ ul li {
 img.yp {
     text-align: center;
     margin-top: 20px;
-    margin-left: 80px;
+    margin-left: 87px;
+    position: absolute;
+    top: 133px;
 }
+
+.yp-username {}
+
+
 
 
 .pfcontainner button[type="unfollow"] {
     background-color: #EE0000;
     color: #fff;
     border-radius: 8px;
-    padding: 10px 30px;
+    padding: 7px 20px;
     border: none;
-    margin-left: 845px;
+    margin-left: 555px;
     margin-bottom: 20px;
+    margin-top: 40px;
+    font-family: cursive;
 }
+
 
 /*Side bar*/
 .rogin-user {
     margin-top: 15px;
     margin-left: 15px;
+    font-family: "ＭＳ Ｐゴシック";
+    font-weight: bold;
 }
 
 
@@ -796,17 +882,17 @@ button[type="button"] a {
     font-size: 15px;
     letter-spacing: 1px;
     text-decoration: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "ＭＳ Ｐゴシック";
+    font-weight: bold;
 }
 
 button[type="button"] a:nth-child(2) {
     margin-inline: 10px;
 }
 
-
-
+/* フォロー・フォロワーボタン（リンク）  */
 button[type="button"] {
-    background-color: #0033CC;
+    background-color: #186AC9;
     margin-left: 115px;
     margin-top: 15px;
     padding: 5px 20px;
@@ -828,11 +914,15 @@ button[name="search"] {
 
 .follow-text {
     margin-left: 15px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+    font-family: "ＭＳ Ｐゴシック";
+    font-weight: bold;
 }
 
 .count {
     margin-right: 140px;
+    font-family: "ＭＳ Ｐゴシック";
+    font-weight: bold;
 }
 
 .follower-count {
@@ -840,7 +930,7 @@ button[name="search"] {
     justify-content: space-between;
 }
 
-/*FollowerList*/
+/*FollowerList（フォロワーのページ）*/
 .title h2 {
     margin-left: 100px;
     margin-top: 15px;
@@ -852,15 +942,24 @@ button[name="search"] {
     justify-content: flex-end;
 }
 
+/*フォロワーの投稿*/
 .follower-post {
     margin-left: 143px;
     margin-top: -10px;
+    margin-bottom: 30px;
 }
 
 .user3 {}
 
 
 img.follower {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+/*フォロワーのアイコン*/
+.follower img {
     text-align: center;
     margin-top: 20px;
     margin-left: 80px;
@@ -921,13 +1020,19 @@ input[class="submit_btn"] {
 .your-profile {
     display: flex;
     padding: 0.5em 0 0.5em 1.4em;
-    margin-left: 120px;
-    margin-top: -35px;
+    margin-left: 130px;
+    margin-top: 31px;
 }
+
+.your-profile p {
+    font-size: 20px;
+}
+
 
 /*他のユーザーのプロフィール画面のユーザー名*/
 .your-name {
     margin-left: 150px;
+    margin-top: 5px;
 }
 
 .your-name2 {
@@ -936,13 +1041,19 @@ input[class="submit_btn"] {
 }
 
 .profile-bio {
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.yourprofile-area {
+    display: flex;
 }
 
 .yourprofile-post {
-    margin-left: 17px;
-    margin-top: 50px;
-    width: 700px;
+    margin-left: 170px;
+    margin-top: 45px;
+    font-size: 20px;
 }
 
 .yourprofile-primary {
