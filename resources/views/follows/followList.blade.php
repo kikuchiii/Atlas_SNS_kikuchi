@@ -9,7 +9,7 @@
       @foreach ($follow as $follow)
         @if ( Auth::user()->isFollowing($follow->id))
           <!--フォローユーザーネーム-->
-          <p class="follow_content"><a href="/user/{{$follow->id}}/yourprofile"><img src="{{ asset('./images/icon3.png ') }}" width="50" height="50"></a></p>
+          <p class="follow_content"><a href="/user/{{$follow->id}}/yourprofile"><img src="{{ asset('storage/' . $follow->images) }}" width="50" height="50"></a></p>
         @endif
       @endforeach
   </div>
@@ -19,7 +19,7 @@
   <li>
     @foreach ($posts as $post)
       <div class="post-list">
-        <p class="followUser"><a href="/user/{{$follow->id}}/yourprofile"><img src="{{ asset('./images/icon3.png ') }}" width="50" height="50"></a></p>
+        <p class="followUser"><a href="/user/{{ $post->user->id }}/yourprofile"><img src="{{ asset('storage/' . $post->user->images) }}" width="50" height="50"></a></p>
         <div class="content2">
           <h5 class="follow-user">{{ $post->user->username }}</h5>
           <p class ="post-created_at">

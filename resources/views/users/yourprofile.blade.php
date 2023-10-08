@@ -5,18 +5,17 @@
 <ul>
   <li>
     <div class="pfcontainner">
-      <!--名前-->
-      <!--変数値を表示する（$profilesは、$profile[x]からコピーしてきたデータが入っている)-->
-    <img class="yp" src="{{ asset('./images/icon3.png ') }}" width="50" height="50">
+    <img class="yp" src="{{ asset('storage/' . $profile->images) }}" width="50" height="50">
     <div class="your-profile">
       <p>name</p>
     <div class="your-name"><h5 class="yp-username">{{ $profile->username }}</h5></div>
     </div>
+    <div class="yourprofile-content">
     <div class="yourprofile-primary">
     <div class="profile-bio"><p>bio</p></div>
     <div class="yourprofile-area">
     <p class="yourprofile-post">{{ $profile->bio }}</p>
-    <!--切り替えボタン-->
+    <!-- フォロ-・解除の切り替えボタン -->
     @if(Auth::user()->isFollowing($profile->id))<!---->
     <form action="{{ route('search.unfollow', $profile->id) }}" method="POST">
       {{ csrf_field() }}
@@ -26,13 +25,15 @@
   @else
   <form action="{{ route('search.follow', $profile->id) }}" method="POST">
     {{ csrf_field() }}
-    <td>><button type="submit">フォローする</button></td>
+    <td>><button type="follow">フォローする</button></td>
   </form>
     @endif
     </div>
     </div>
+    </div>
+    @foreach ($UserPosts as $UserPosts)
     <div class="yourprofile-secondary">
-      @foreach ($UserPosts as $UserPosts)
+      <img src="{{ asset('storage/' . $UserPosts->user->images) }}" width="50" height="50">
         <div class="pf-detail">
           <h5 class="yp-username">{{ $profile->username }}</h5>
           <p class ="post-created_at">
@@ -40,8 +41,8 @@
           </p>
         </div>
         <p>{{ $UserPosts->post }}</p>
+      </div>
     @endforeach
-</div>
 </div>
   </li>
 </ul>

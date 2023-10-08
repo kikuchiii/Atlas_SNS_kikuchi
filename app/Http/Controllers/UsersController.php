@@ -74,6 +74,7 @@ if ($request->hasFile('images')) {
        $name = $request->input('search');
        $list = DB::table('users')
      ->where('username','like','%'. $name . '%')
+     ->orderBy('created_at','desc')
      ->get();
      $search_result = '検索ワード : '. $name;
      return view('users.search', [
@@ -84,9 +85,16 @@ if ($request->hasFile('images')) {
 
     public function yourprofile($id)
     {
-                $profile = User::where('id', $id)->first();
-                $UserPosts = Post::where('posts.user_id',$id)->get();
+    $profile = User::where('id', $id)
+    ->orderBy('created_at','desc')
+    ->first();
+    $UserPosts = Post::where('posts.user_id',$id)->get();
+    $following_id = Auth::user()->follows()->pluck('followed_id');
+
+    $follow = User::whereIn('id', $following_id)
+    ->get();
+
 return view ('users.yourprofile',[
-    'profile' => $profile, 'UserPosts' => $UserPosts]);
+    'profile' => $profile, 'UserPosts' => $UserPosts,'follow' => $follow]);
     }
 }

@@ -24,7 +24,8 @@
                         <div class="user-container">
                             <!--ユーザー画像-->
                             <div class="usertext">
-                            <td><img class="mark" src="{{ asset('./images/icon3.png ') }}"></td>
+                            <td><img class="mark" src="{{ $list->images ? asset('storage/' . $list->images) : asset('./images/icon3.png ') }}" alt="User Image">
+</td></td>
                                 <div class="user-list">
                                     <!--ユーザーネーム-->
                                     <h5 class="user">{{ $list->username }}</h5>

@@ -5,9 +5,9 @@
     <div class="form">
       {!! Form::open(['url' => 'post/creation']) !!}
       @csrf
+      <img class="form-post" src="{{ asset('storage/' . Auth::user()->images) }}" width="50" height="50" alt="username" >
       <div class="form-group">
-        <img class="mark" src="./images/icon3.png" alt="username" >
-        {!! Form::textarea('newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください', ]) !!}
+        {!! Form::textarea('newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください','rows'=>'6', 'cols'=>'80' ]) !!}
       </div>
       <button type="submit"><img src="./images/post.png" alt="送信" class="send"/></button>
       {!! Form::close() !!}
@@ -73,6 +73,19 @@
     </form>
     <a class="js-modal-close" href="">閉じる</a>
   </div>
+<!-- モーダルの中でエラーメッセージを表示 -->
+@if(session('validation_errors'))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach(session('validation_errors')->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+
 </div>
 
 

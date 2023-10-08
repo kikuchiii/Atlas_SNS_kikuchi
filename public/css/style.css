@@ -205,6 +205,15 @@ img.btn btn-danger {
     width: 700px;
 }
 
+/* 投稿フォームの画像  */
+.form-post {
+    position: absolute;
+    top: 135px;
+    left: 95px;
+    background-color: none;
+}
+
+
 /* ログインユーザーの名前 */
 .rogin-username {
     margin-top: 5px;
@@ -350,7 +359,7 @@ img.btn {
 }
 
 .user-list {
-    margin-left: -175px;
+    margin-left: -200px;
     display: inline-block;
 }
 
@@ -369,13 +378,14 @@ img.btn {
 button[type="submit"] {
     /* 文字に合わせる */
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 920px;
     height: 50px;
     width: 45px;
     color: rebeccapurple;
     border-radius: 5px;
     border: none;
+    background: none;
 }
 
 /* 送信ボタン画像 */
@@ -488,7 +498,7 @@ button[type="unfollow"] {
 
 .form-area {
     border-bottom: 7px solid #dcdcdc;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     margin-bottom: -27px;
 }
 
@@ -776,28 +786,39 @@ input[name="newPost"] {
 }
 
 textarea[name="newPost"] {
-    width: 400px;
+    width: 770px;
     /*--幅--*/
     padding: 10px;
     /*--余白--*/
-    margin-left: -200px;
+    margin-left: 100px;
     font-size: 16px;
     /*--文字サイズ--*/
     border: solid 2px #cccccc;
     /*--ボーダー線--*/
     border-radius: 5px;
     /*--角丸--*/
-    height: 10px;
+    height: 80px;
     border: none;
     display: inline-block;
     white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
 }
 
 textarea[class='form-control']::placeholder {
     color: #EEEEEE;
     letter-spacing: 1.5px;
     font-weight: 400;
+    resize: none;
+    word-wrap: break-word;
+    /* 長い単語を適切に折り返す */
+    overflow-wrap: break-word;
+    /* 長い単語を適切に折り返す (別のブラウザでサポートされている場合があります) */
+    min-height: calc(3.5em + (0.75rem + 2px));
 }
+
+
 
 
 
@@ -852,8 +873,16 @@ img.yp {
 
 .yp-username {}
 
-
-
+.pfcontainner button[type="follow"] {
+    background-color: #186AC9;
+    color: #fff;
+    border-radius: 8px;
+    padding: 7px 20px;
+    border: none;
+    margin-left: 555px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
 
 .pfcontainner button[type="unfollow"] {
     background-color: #EE0000;
@@ -864,7 +893,6 @@ img.yp {
     margin-left: 555px;
     margin-bottom: 20px;
     margin-top: 40px;
-    font-family: cursive;
 }
 
 
@@ -947,6 +975,7 @@ button[name="search"] {
     margin-left: 143px;
     margin-top: -10px;
     margin-bottom: 30px;
+    width: 700px
 }
 
 .user3 {}
@@ -1009,10 +1038,14 @@ textarea {
     height: 190px;
 }
 
+textarea[name="upPost"] {
+    border: 2px solid gray;
+}
+
+
 /*投稿編集モーダル　アイコン*/
 input[class="submit_btn"] {
     margin-left: 400px;
-    margin-top: -45px
 }
 
 
@@ -1056,6 +1089,10 @@ input[class="submit_btn"] {
     font-size: 20px;
 }
 
+.yourprofile-content {
+    border-bottom: 8px solid #EEEEEE;
+}
+
 .yourprofile-primary {
     display: flex;
     padding: 0.5em 0 0.5em 1.4em;
@@ -1064,17 +1101,23 @@ input[class="submit_btn"] {
 }
 
 .yourprofile-secondary {
-    border-top: 8px solid #d3d3d3;
     border-bottom: 1px solid #d3d3d3;
+}
+
+.yourprofile-secondary img {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 80px;
 }
 
 .yourprofile-secondary p {
     margin-left: 160px;
+    width: 700px;
 }
 
 .pf-detail {
     display: flex;
     justify-content: space-between;
     margin-left: 160px;
-    margin-top: 35px;
+    margin-top: -40px;
 }
