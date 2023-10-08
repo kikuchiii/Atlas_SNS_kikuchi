@@ -922,7 +922,7 @@ button[type="button"] a:nth-child(2) {
 /* フォロー・フォロワーボタン（リンク）  */
 button[type="button"] {
     background-color: #186AC9;
-    margin-left: 115px;
+    margin-left: 105px;
     margin-top: 15px;
     padding: 5px 20px;
     margin-bottom: 15px;
@@ -943,7 +943,6 @@ button[name="search"] {
 
 .follow-text {
     margin-left: 15px;
-    letter-spacing: 1px;
     font-family: "ＭＳ Ｐゴシック";
     font-weight: bold;
 }
