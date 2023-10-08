@@ -13,22 +13,19 @@ header {
 
 img.example1 {
     width: 100px;
-    height: 80px;
-    position: absolute;
     height: 40px;
-    top: 30px;
-    left: 40px;
+    margin-top: 30px;
+    margin-left: 30px;
 }
 
 .rogin-menu {
-    position: relative;
     color: #fff;
 }
 
 .rogin {
     position: absolute;
-    top: 30px;
-    right: 20px;
+    top: 25px;
+    right: 27px;
 }
 
 
@@ -49,7 +46,7 @@ img.example1 {
     box-sizing: border-box;
     transform: translateY(-25%) rotate(135deg);
     position: absolute;
-    top: 50px;
+    top: 45px;
     right: 100px;
 
 }
@@ -496,12 +493,16 @@ button[type="unfollow"] {
     height: 10px;
 }
 
+
+
 .form-area {
     border-bottom: 7px solid #dcdcdc;
     padding-bottom: 30px;
-    margin-bottom: -27px;
 }
 
+::marker {
+    list-style-type: none;
+}
 
 .form-group {
     border: none;

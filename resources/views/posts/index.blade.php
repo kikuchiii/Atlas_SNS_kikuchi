@@ -23,7 +23,6 @@
 @endif
 
   </div>
-  <li>
     @foreach ($list as $list)
 <div class="post-containner">
         <div class="content">
@@ -41,7 +40,7 @@
                 <h5 class="rogin-username">{{ $list->user->username }}</h5>
                 <p class="post-updated_at">{{ $list->updated_at->format('Y-m-d G:i') }}</p>
             </div>
-            <p class="top-post">{{ $list->post }}</p>
+            <p class="top-post">{!! nl2br(e($list->post)) !!}</p>
         </div>
         @if (Auth::id() == $list->user_id)
         <!-- 投稿の編集ボタン -->
@@ -60,7 +59,6 @@
         @endif
       </div>
       @endforeach
-    </li>
 <!--モーダル-->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
